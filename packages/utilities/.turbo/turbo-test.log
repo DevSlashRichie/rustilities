@@ -1,0 +1,67 @@
+PASS test/option.test.ts
+  Option
+    ✓ creates a success option (2 ms)
+    ✓ creates a failure option (5 ms)
+    unwrap
+      ✓ when there is some
+      ✓ throws when is empty (1 ms)
+    map
+      ✓ when there is some (1 ms)
+      ✓ when is empty
+    unwrapOr
+      ✓ when there is some
+      ✓ when is empty
+    unwrapOrElse
+      ✓ when there is some
+      ✓ when is empty
+    mapOr
+      ✓ when there is some (1 ms)
+      ✓ when is empty
+    okOr
+      ✓ when there is some
+      ✓ when is empty
+    or
+      ✓ when there is some
+      ✓ when is empty
+    contains
+      ✓ when there is some
+      ✓ when is empty
+
+PASS test/result.test.ts
+  Result
+    ✓ should create an Ok Result (2 ms)
+    ✓ should create an Err Result (6 ms)
+    unwrap
+      ✓ should unwrap an Ok Result
+      ✓ should throw an error when unwrapping an Err Result (1 ms)
+    unwrapOr
+      ✓ should unwrap an Ok Result
+      ✓ should return the default value when unwrapping an Err Result
+      ✓ should throw an error when unwrapping an Ok Result (1 ms)
+      ✓ should unwrap an Err Result
+    contains
+      ✓ returns true when the value is contained in an Ok Result
+      ✓ returns false when the value is not contained in an Ok Result (1 ms)
+      ✓ returns false when unwrapping an Err Result
+    unwrapOrElse
+      ✓ should unwrap an Ok Result
+      ✓ should return the default value when unwrapping an Err Result
+    map
+      ✓ should map an Ok Result
+      ✓ won't map an Err Result (1 ms)
+    mapErr
+      ✓ won't map an Ok Result
+      ✓ will map an Err Result
+
+
+=============================== Coverage summary ===============================
+Statements   : 100% ( 190/190 )
+Branches     : 100% ( 49/49 )
+Functions    : 100% ( 33/33 )
+Lines        : 100% ( 190/190 )
+================================================================================
+Test Suites: 2 passed, 2 total
+Tests:       35 passed, 35 total
+Snapshots:   0 total
+Time:        0.969 s, estimated 1 s
+Ran all test suites.
