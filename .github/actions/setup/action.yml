@@ -18,3 +18,7 @@ runs:
         path: '**/node_modules'
         key: ${{ runner.os }}-node-modules-${{ hashFiles('**/yarn.lock') }}
 
+    - shell: bash
+      run: yarn install
+
+

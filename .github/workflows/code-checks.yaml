@@ -30,7 +30,7 @@ jobs:
         uses: codespell-project/actions-codespell@v1.0
         with:
           check_filenames: true
-          skip: package-lock.json,*.pdf
+          skip: package-lock.json,*.pdf,yarn.lock,package.json
 
   prettier:
     runs-on: ubuntu-latest
