@@ -1,0 +1,43 @@
+name: code checks
+
+on:
+  push:
+    branches:
+      - master
+    pull_request: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+        name: Set up environment
+
+      - run: yarn lint
+
+  codespell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run CodeSpell
+        uses: codespell-project/actions-codespell@v1.0
+        with:
+          check_filenames: true
+          skip: package-lock.json,*.pdf
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: ./.github/actions/setup
+        name: Set up environment
+
+      - run: yarn prettier:check
