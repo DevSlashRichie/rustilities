@@ -20,7 +20,7 @@ jobs:
       - uses: ./.github/actions/setup
         name: Set up environment
 
-      - run: yarn lint
+      - run: yarn lint:check
 
   codespell:
     runs-on: ubuntu-latest

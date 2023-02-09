@@ -7,7 +7,7 @@
       "outputs": ["lib/**"],
       "outputMode": "full"
     },
-    "lint": {
+    "lint:check": {
       "inputs": ["src/**/*.ts", "test/**/*.ts"],
       "outputs": []
     },
