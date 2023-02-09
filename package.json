@@ -25,7 +25,7 @@
     "@types/node": "^18.13.0",
     "@types/yargs": "^17.0.22",
     "commitlint": "^17.2.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "jest": "^29.3.1",
     "prettier": "^2.8.4",
     "protoc": "^1.1.3",

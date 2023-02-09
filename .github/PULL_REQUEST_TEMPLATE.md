@@ -4,7 +4,7 @@ the requirements below.
 
 Bug fixes and new features should include tests.
 
-- The name should include conventional commits and the body a details description of what you did. 
+- The name should include conventional commits and the body a details description of what you did.
     Include reference code as link, entities and image of the result.
 -->
 

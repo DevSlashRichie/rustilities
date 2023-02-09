@@ -2,7 +2,6 @@ import { Some, None } from "../src/option";
 import { Err, Ok } from "../src/result";
 
 describe("Option", () => {
-
   it("creates a success option", () => {
     const option = Some(1);
 
@@ -20,7 +19,6 @@ describe("Option", () => {
   });
 
   describe("unwrap", () => {
-
     it("when there is some", () => {
       const opt = Some("str");
       expect(opt.unwrap()).toBe("str");
@@ -30,25 +28,21 @@ describe("Option", () => {
       const opt = None();
       expect(() => opt.unwrap()).toThrow();
     });
-
   });
 
   describe("map", () => {
-
     it("when there is some", () => {
       const opt = Some("str");
-      expect(opt.map(s => `${s}-3`)).toEqual(Some("str-3"));
+      expect(opt.map((s) => `${s}-3`)).toEqual(Some("str-3"));
     });
 
     it("when is empty", () => {
       const opt = None<string>();
-      expect(opt.map(s => s.length)).toEqual(None());
+      expect(opt.map((s) => s.length)).toEqual(None());
     });
-
   });
 
   describe("unwrapOr", () => {
-
     it("when there is some", () => {
       const opt = Some("str");
       expect(opt.unwrapOr("default")).toBe("str");
@@ -58,11 +52,9 @@ describe("Option", () => {
       const opt = None();
       expect(opt.unwrapOr("default")).toBe("default");
     });
-
   });
 
   describe("unwrapOrElse", () => {
-
     it("when there is some", () => {
       const opt = Some("str");
       expect(opt.unwrapOrElse(() => "default")).toBe("str");
@@ -75,20 +67,18 @@ describe("Option", () => {
   });
 
   describe("mapOr", () => {
-
     it("when there is some", () => {
       const opt = Some("str");
-      expect(opt.mapOr("default", s => `${s}-3`)).toBe("str-3");
+      expect(opt.mapOr("default", (s) => `${s}-3`)).toBe("str-3");
     });
 
     it("when is empty", () => {
       const opt = None<string>();
-      expect(opt.mapOr("default", s => s)).toBe("default");
+      expect(opt.mapOr("default", (s) => s)).toBe("default");
     });
   });
 
   describe("okOr", () => {
-
     it("when there is some", () => {
       const opt = Some("str");
       expect(opt.okOr(new Error("error"))).toEqual(Ok("str"));
@@ -112,16 +102,15 @@ describe("Option", () => {
     });
   });
 
-  describe('contains', () => {
-    it('when there is some', () => {
-      const opt = Some('str');
-      expect(opt.contains('str')).toBe(true);
+  describe("contains", () => {
+    it("when there is some", () => {
+      const opt = Some("str");
+      expect(opt.contains("str")).toBe(true);
     });
 
-    it('when is empty', () => {
+    it("when is empty", () => {
       const opt = None<string>();
-      expect(opt.contains('str')).toBe(false);
+      expect(opt.contains("str")).toBe(false);
     });
   });
-
 });
