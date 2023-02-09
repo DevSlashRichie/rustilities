@@ -9,14 +9,8 @@ runs:
         node-version: 16
 
     - name: Install Yarn
-      run: |
-        curl --compressed -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 3.3.0
       shell: bash
-
-    - name: Set up PATH
-      run: |
-        echo "::set-env name=PATH::$HOME/.yarn/bin:$PATH"
-      shell: bash
+      run: corepack enable
 
     - uses: actions/cache@v3
       id: cache
