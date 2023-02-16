@@ -1,25 +1,38 @@
+PASS test/err.test.ts
+  Err
+    ✓ should be able to create an Err (2 ms)
+    with parent
+      ✓ create an Err with a parent
+      ✓ Err with a parent and a message
+      ✓ returns complete message (1 ms)
+      ✓ parent is an arbitrary error
+      ✓ create parent with #extend (1 ms)
+    with no parent
+      ✓ returns complete message
+      ✓ returns complete message with a message
+
 PASS test/option.test.ts
   Option
     ✓ creates a success option (2 ms)
-    ✓ creates a failure option (5 ms)
+    ✓ creates a failure option (11 ms)
     unwrap
       ✓ when there is some
-      ✓ throws when is empty (1 ms)
+      ✓ throws when is empty
     map
-      ✓ when there is some (1 ms)
+      ✓ when there is some (5 ms)
       ✓ when is empty
     unwrapOr
       ✓ when there is some
       ✓ when is empty
     unwrapOrElse
-      ✓ when there is some
+      ✓ when there is some (1 ms)
       ✓ when is empty
     mapOr
-      ✓ when there is some (1 ms)
+      ✓ when there is some
       ✓ when is empty
     okOr
       ✓ when there is some
-      ✓ when is empty
+      ✓ when is empty (1 ms)
     or
       ✓ when there is some
       ✓ when is empty
@@ -30,22 +43,22 @@ PASS test/option.test.ts
 PASS test/result.test.ts
   Result
     ✓ should create an Ok Result (2 ms)
-    ✓ should create an Err Result (6 ms)
+    ✓ should create an Err Result (10 ms)
     unwrap
       ✓ should unwrap an Ok Result
-      ✓ should throw an error when unwrapping an Err Result (1 ms)
+      ✓ should throw an error when unwrapping an Err Result
     unwrapOr
-      ✓ should unwrap an Ok Result
+      ✓ should unwrap an Ok Result (1 ms)
       ✓ should return the default value when unwrapping an Err Result
       ✓ should throw an error when unwrapping an Ok Result (1 ms)
       ✓ should unwrap an Err Result
     contains
       ✓ returns true when the value is contained in an Ok Result
-      ✓ returns false when the value is not contained in an Ok Result (1 ms)
+      ✓ returns false when the value is not contained in an Ok Result
       ✓ returns false when unwrapping an Err Result
     unwrapOrElse
       ✓ should unwrap an Ok Result
-      ✓ should return the default value when unwrapping an Err Result
+      ✓ should return the default value when unwrapping an Err Result (6 ms)
     map
       ✓ should map an Ok Result
       ✓ won't map an Err Result (1 ms)
@@ -55,13 +68,13 @@ PASS test/result.test.ts
 
 
 =============================== Coverage summary ===============================
-Statements   : 100% ( 190/190 )
-Branches     : 100% ( 49/49 )
-Functions    : 100% ( 33/33 )
-Lines        : 100% ( 190/190 )
+Statements   : 100% ( 214/214 )
+Branches     : 100% ( 62/62 )
+Functions    : 100% ( 38/38 )
+Lines        : 100% ( 214/214 )
 ================================================================================
-Test Suites: 2 passed, 2 total
-Tests:       35 passed, 35 total
+Test Suites: 3 passed, 3 total
+Tests:       43 passed, 43 total
 Snapshots:   0 total
-Time:        0.969 s, estimated 1 s
+Time:        3.174 s
 Ran all test suites.
