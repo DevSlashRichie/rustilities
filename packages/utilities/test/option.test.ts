@@ -1,4 +1,4 @@
-import { Some, None } from "../src/option";
+import { Some, None, Option } from "../src/option";
 import { Err, Ok } from "../src/result";
 
 describe("Option", () => {
@@ -16,6 +16,18 @@ describe("Option", () => {
     expect(option.isSome()).toBe(false);
     expect(option.isNone()).toBe(true);
     expect(() => option.unwrap()).toThrow();
+  });
+
+  describe("from nullable", () => {
+    it("creates empty from null", () => {
+      const option = Option.fromNullable(null);
+      expect(option.isNone()).toBe(true);
+    });
+
+    it("creates empty from undefined", () => {
+      const option = Option.fromNullable(undefined);
+      expect(option.isNone()).toBe(true);
+    });
   });
 
   describe("unwrap", () => {

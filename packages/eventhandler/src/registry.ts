@@ -1,6 +1,9 @@
 import "reflect-metadata";
 import amqp, { Connection } from "amqplib";
 import { EventHandlerOptions } from "./annotations";
+import { Err, Ok, Result } from "utilities/src/result";
+import { Empty, EmptyElement } from "utilities/src/empty";
+import { NotFoundConnectionError } from "./errors/NotFoundConnectionError";
 
 type ListenerPair = {
   listener: any;
@@ -21,18 +24,14 @@ export class Registry {
     this.connections[host] = await amqp.connect(host);
   }
 
-  public addListener(host: string, listener: any) {
+  public addListener(host: string, listener: any) : Result<EmptyElement, NotFoundConnectionError> {
     const availableMethods = Object.getOwnPropertyNames(
       Object.getPrototypeOf(listener)
     );
     const realConnection = this.connections[host];
 
     if (!realConnection)
-      throw new Error(
-        `Connection ${host} not found: Available connections: ${Object.keys(
-          this.connections
-        ).join(", ")}`
-      );
+      return Err(new NotFoundConnectionError(host));
 
     availableMethods.map(async (method) => {
       const eventHandlerAnnotation: EventHandlerOptions = Reflect.getMetadata(
@@ -92,5 +91,6 @@ export class Registry {
     });
 
     this.listeners.add({ listener, connectionIdentifier: host });
+    return Ok(Empty());
   }
 }

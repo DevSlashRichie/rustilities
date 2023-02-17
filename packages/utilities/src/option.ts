@@ -87,6 +87,13 @@ export class Option<T> {
     }
     return this.value === value;
   }
+
+  public static fromNullable<U>(value: U | null | undefined): Option<U> {
+    if (value === null || value === undefined) {
+      return Option.empty();
+    }
+    return Option.of(value);
+  }
 }
 
 export function Some<T>(value: T): Option<T> {

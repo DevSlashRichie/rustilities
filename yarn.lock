@@ -2726,6 +2726,7 @@ eslint-plugin-tree-shaking@latest:
     nodemon: ^2.0.20
     reflect-metadata: ^0.1.13
     ts-jest: ^29.0.5
+    utilities: "*"
   languageName: unknown
   linkType: soft
 
@@ -6096,7 +6097,7 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"utilities@workspace:packages/utilities":
+"utilities@*, utilities@workspace:packages/utilities":
   version: 0.0.0-use.local
   resolution: "utilities@workspace:packages/utilities"
   dependencies:

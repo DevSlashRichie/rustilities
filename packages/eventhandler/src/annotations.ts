@@ -37,7 +37,7 @@ export interface ConsumerOptions {
 
 export function EventHandler(
   exchange: ExchangeIdentifier,
-  queue: QueueIdentifier,
+  queue: QueueIdentifier | string,
   consumerOptions?: ConsumerOptions
 ) {
   return function (
@@ -45,9 +45,10 @@ export function EventHandler(
     propertyKey: string,
     descriptor: PropertyDescriptor
   ) {
+    const normalizedQueue = typeof queue === "string" ? { name: queue } : queue;
     Reflect.defineMetadata(
       "eventhandler:eventhandler",
-      { exchange, queue, consumerOptions, descriptor },
+      { exchange, queue: normalizedQueue, consumerOptions, descriptor },
       target,
       propertyKey
     );

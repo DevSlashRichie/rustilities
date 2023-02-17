@@ -4,21 +4,13 @@ import { ConsumeMessage } from "amqplib";
 
 const registry = new Registry();
 
+const EXCHANGE_PAYMENTS = {
+  name: "test-payments",
+  type: "direct"
+};
+
 class TestListener {
-  @EventHandler(
-    {
-      name: "test-payments",
-      type: "direct",
-    },
-    {
-      name: "test-payments",
-    },
-    {
-      rabbit: {
-        noAck: true,
-      },
-    }
-  )
+  @EventHandler(EXCHANGE_PAYMENTS, "test-payments")
   public onUserPaymentEvent(msg: any, raw: ConsumeMessage | null) {
     console.log("msg: ", msg);
   }
@@ -26,7 +18,11 @@ class TestListener {
 
 async function start() {
   await registry.openConnection("amqp://localhost");
-  registry.addListener("amqp://localhost", new TestListener());
+  const lr = registry.addListener("amqp://localhost", new TestListener());
+
+  if(lr.isErr()) {
+    console.error(lr.unwrapErr().display());
+  }
 }
 
 start().catch(console.error);
