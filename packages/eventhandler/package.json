@@ -11,7 +11,7 @@
   "repository": "https://github.com/MyMetaverse/CoreOfMeta",
   "scripts": {
     "build": "tsup src/index.ts --format cjs --dts -d build --sourcemap --minify terser",
-    "test": "jest",
+    "test": "jest --runInBand --detectOpenHandles --forceExit",
     "lint": "concurrently \"yarn:lint:*(!fix)\"",
     "lint:src": "eslint --ext .ts src",
     "lint:fix": "concurrently \"yarn:lint:*:fix\"",

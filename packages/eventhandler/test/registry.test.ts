@@ -35,9 +35,7 @@ describe("EventRegistry", () => {
   });
 
   afterAll(async () => {
-    await container.stop({
-      timeout: 1000,
-    });
+    await container.stop({});
   });
 
   it("can instantiate", () => {
