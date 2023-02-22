@@ -1,5 +1,5 @@
 {
-  "name": "utilities",
+  "name": "@mymetaverse/utilities",
   "version": "2.0.0",
   "description": "corm utilities",
   "packageManager": "yarn@3.3.0",

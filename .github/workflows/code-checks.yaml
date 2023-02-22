@@ -31,7 +31,6 @@ jobs:
           check_filenames: true
           ignore_words_file: .codespellignore
           skip: package-lock.json,*.pdf,yarn.lock,package.json
-          ignore_words_list: afterAll
           only_warn: 1
 
   prettier:

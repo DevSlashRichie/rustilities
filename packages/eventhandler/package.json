@@ -1,5 +1,5 @@
 {
-  "name": "eventhandler",
+  "name": "@mymetaverse/eventhandler",
   "version": "2.0.0",
   "description": "event handler for rabbitmq",
   "packageManager": "yarn@3.3.0",
@@ -32,8 +32,8 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@mymetaverse/utilities": "workspace:*",
     "amqplib": "^0.10.3",
-    "reflect-metadata": "^0.1.13",
-    "utilities": "workspace:*"
+    "reflect-metadata": "^0.1.13"
   }
 }
