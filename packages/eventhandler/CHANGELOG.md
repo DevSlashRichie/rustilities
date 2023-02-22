@@ -1,5 +1,14 @@
 # eventhandler
 
+## 1.0.2
+
+### Patch Changes
+
+- c9db81a: fixed prefix to import packages internally
+- Updated dependencies [c9db81a]
+  - @mymetaverse/utilities@1.0.2
+  - @mymetaverse/global@1.0.1
+
 ## 1.0.1
 
 ### Patch Changes
