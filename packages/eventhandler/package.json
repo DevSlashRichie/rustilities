@@ -41,5 +41,6 @@
     "@mymetaverse/utilities": "*",
     "amqplib": "^0.10.3",
     "reflect-metadata": "^0.1.13"
-  }
+  },
+  "bundledDependencies": ["@mymetaverse/global"]
 }
