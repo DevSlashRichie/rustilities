@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "turbo run build --filter='./packages/*'",
-    "test": "turbo run test --filter='./packages/*'",
+    "test": "turbo run build test --filter='./packages/*'",
     "coverage": "turbo run test --filter='./packages/*' --coverage",
     "publish-packages": "changeset version && changeset publish",
     "create-package": "ts-node scripts/create-package/index.ts",

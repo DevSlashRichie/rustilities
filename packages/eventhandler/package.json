@@ -5,6 +5,11 @@
   "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
+  "files": [
+    "build",
+    "src",
+    "package.json"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
