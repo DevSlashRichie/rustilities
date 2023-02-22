@@ -1,5 +1,11 @@
 # utilities
 
+## 1.0.1
+
+### Patch Changes
+
+- b290a3c: Import of internal packages was beign used with the wrong format
+
 ## 1.0.0
 
 ### Major Changes
