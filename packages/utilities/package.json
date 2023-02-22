@@ -19,7 +19,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "global": "workspace:*"
+    "global": "*"
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",

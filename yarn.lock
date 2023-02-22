@@ -1434,7 +1434,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mymetaverse/eventhandler@workspace:packages/eventhandler"
   dependencies:
-    "@mymetaverse/utilities": "workspace:*"
+    "@mymetaverse/utilities": "*"
     "@types/amqplib": ^0.10.1
     "@types/jest": ^29.4.0
     "@types/node": ^18.13.0
@@ -1452,7 +1452,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mymetaverse/utilities@workspace:*, @mymetaverse/utilities@workspace:packages/utilities":
+"@mymetaverse/utilities@*, @mymetaverse/utilities@workspace:packages/utilities":
   version: 0.0.0-use.local
   resolution: "@mymetaverse/utilities@workspace:packages/utilities"
   dependencies:
@@ -1460,7 +1460,7 @@ __metadata:
     "@types/node": ^18.13.0
     "@typescript-eslint/parser": ^5.51.0
     eslint: ^8.33.0
-    global: "workspace:*"
+    global: "*"
     jest: ^29.4.2
     nodemon: ^2.0.20
     terser: ^5.16.4
@@ -4317,7 +4317,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"global@workspace:*, global@workspace:shared/global":
+"global@*, global@workspace:shared/global":
   version: 0.0.0-use.local
   resolution: "global@workspace:shared/global"
   dependencies:
