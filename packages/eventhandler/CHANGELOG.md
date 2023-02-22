@@ -1,6 +1,6 @@
 # eventhandler
 
-## 2.0.0
+## 1.0.0
 
 ### Major Changes
 
@@ -9,4 +9,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - utilities@2.0.0
+  - utilities@1.0.0

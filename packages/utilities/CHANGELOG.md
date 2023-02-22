@@ -1,6 +1,6 @@
 # utilities
 
-## 2.0.0
+## 1.0.0
 
 ### Major Changes
 
@@ -9,4 +9,4 @@
 ### Patch Changes
 
 - Updated dependencies
-  - global@2.0.0
+  - global@1.0.0

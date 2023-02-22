@@ -1,8 +1,9 @@
 {
   "name": "global",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "corm",
   "packageManager": "yarn@3.3.0",
+  "private": true,
   "files": [
     "base.json",
     "jest.config.ts"

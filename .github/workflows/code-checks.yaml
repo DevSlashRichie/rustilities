@@ -54,5 +54,8 @@ jobs:
       - name: Setup Docker
         uses: docker-practice/actions-setup-docker@master
 
+      - run: yarn build
+        name: Building Packages
+
       - run: yarn test
         name: Run tests
