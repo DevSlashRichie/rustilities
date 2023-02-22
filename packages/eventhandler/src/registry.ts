@@ -2,11 +2,13 @@ import "reflect-metadata";
 import amqp, { Connection } from "amqplib";
 import { EventHandlerOptions } from "./annotations";
 import { Err, Ok, Result } from "utilities/src/result";
-import { Empty, EmptyElement } from "utilities/src/empty";
-import { NotFoundConnectionError } from "./errors/NotFoundConnectionError";
+import { EmptyElement } from "utilities/src/empty";
+import { NotFoundConnectionError } from "./errors";
+
+type Listener<T extends object> = T;
 
 type ListenerPair = {
-  listener: any;
+  listener: Listener<any>;
   connectionIdentifier: string;
 };
 
@@ -22,18 +24,32 @@ export class Registry {
   public async openConnection(host: string) {
     console.info(`Opening a new  connection to ${host}`);
     this.connections[host] = await amqp.connect(host);
+    return () => {
+      this.closeConnection(host);
+    };
   }
 
-  public addListener(host: string, listener: any) : Result<EmptyElement, NotFoundConnectionError> {
+  public async closeConnection(host: string) {
+    console.info(`Closing connection to ${host}`);
+    const connection = this.connections[host];
+    if (connection) {
+      await connection.close();
+      delete this.connections[host];
+    }
+  }
+
+  public async addListener<T extends object>(
+    host: string,
+    listener: Listener<T>
+  ): Promise<Result<EmptyElement, NotFoundConnectionError>> {
     const availableMethods = Object.getOwnPropertyNames(
       Object.getPrototypeOf(listener)
     );
     const realConnection = this.connections[host];
 
-    if (!realConnection)
-      return Err(new NotFoundConnectionError(host));
+    if (!realConnection) return Err(new NotFoundConnectionError(host));
 
-    availableMethods.map(async (method) => {
+    const handlers = availableMethods.map(async (method) => {
       const eventHandlerAnnotation: EventHandlerOptions = Reflect.getMetadata(
         "eventhandler:eventhandler",
         listener,
@@ -83,14 +99,27 @@ export class Registry {
                   : msg.content;
             }
 
-            descriptor.value.call(listener, payload, msg);
+            descriptor.value.call(listener, payload, msg, channel);
           },
           consumerOptions?.rabbit
         );
       }
     });
 
+    await Promise.all(handlers);
+
     this.listeners.add({ listener, connectionIdentifier: host });
-    return Ok(Empty());
+    return Ok(async () => {
+      await this.removeListener(listener);
+    });
+  }
+
+  public async removeListener<T extends object>(listener: Listener<T>) {
+    this.listeners.forEach((listenerPair) => {
+      if (listenerPair.listener === listener) {
+        this.closeConnection(listenerPair.connectionIdentifier);
+        this.listeners.delete(listenerPair);
+      }
+    });
   }
 }

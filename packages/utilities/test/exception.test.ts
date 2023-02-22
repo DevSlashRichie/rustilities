@@ -1,7 +1,7 @@
 import { Exception } from "../src/exception";
 import { None, Option } from "../src/option";
 
-describe("Err", () => {
+describe("Exception", () => {
   it("should be able to create an Err", () => {
     const err = Exception.create("test", None());
     expect(err).not.toBeNull();
@@ -32,31 +32,31 @@ describe("Err", () => {
 
     it("returns complete message", () => {
       const err = Exception.create("test", Option.of(parent));
-      expect(err.display).toBe("Error: test Error: parent");
+      expect(err.display()).toBe("Exception: test Exception: parent");
     });
 
     it("parent is an arbitrary error", () => {
       const parent = new Error("ar");
       const err = Exception.create("test", Option.of(parent));
-      expect(err.display).toBe("Error: test Error: ar");
+      expect(err.display()).toBe("Exception: test Error: ar");
     });
 
     it("create parent with #extend", () => {
       const err = Exception.create("test", None());
       const err2 = err.extend(parent);
-      expect(err2.display).toBe("Error: test Error: parent");
+      expect(err2.display()).toBe("Exception: test Exception: parent");
     });
   });
 
   describe("with no parent", () => {
     it("returns complete message", () => {
       const err = Exception.create("test", None());
-      expect(err.display).toBe("Error: test");
+      expect(err.display()).toBe("Exception: test");
     });
 
     it("returns complete message with a message", () => {
       const err = Exception.create("test", None());
-      expect(err.display).toBe("Error: test");
+      expect(err.display()).toBe("Exception: test");
     });
   });
 });

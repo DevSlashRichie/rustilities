@@ -14,7 +14,9 @@
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "warn"
   },
   "plugins": ["@typescript-eslint", "prettier"]
 }

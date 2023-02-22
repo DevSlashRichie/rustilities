@@ -49,5 +49,8 @@ jobs:
       - uses: ./.github/actions/setup
         name: Set up environment
 
+      - name: Setup Docker
+        uses: docker-practice/actions-setup-docker@master
+
       - run: yarn test
         name: Run tests
