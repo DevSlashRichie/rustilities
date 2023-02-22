@@ -1,0 +1,17 @@
+PASS test/errors/NotFoundConnectionError.test.ts
+  NotFoundConnectionError
+    ✓ is instantiable (2 ms)
+    ✓ has a valid message
+
+
+=============================== Coverage summary ===============================
+Statements   : 34.53% ( 67/194 )
+Branches     : 50% ( 1/2 )
+Functions    : 33.33% ( 1/3 )
+Lines        : 34.53% ( 67/194 )
+================================================================================
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.65 s
+Ran all test suites.
