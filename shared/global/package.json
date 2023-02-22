@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "description": "corm",
   "packageManager": "yarn@3.3.0",
-  "private": true,
   "files": [
     "base.json",
     "jest.config.ts"
