@@ -1,5 +1,5 @@
 {
-  "name": "global",
+  "name": "@mymetaverse/global",
   "version": "1.0.0",
   "description": "corm",
   "packageManager": "yarn@3.3.0",

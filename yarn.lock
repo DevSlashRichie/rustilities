@@ -1434,6 +1434,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@mymetaverse/eventhandler@workspace:packages/eventhandler"
   dependencies:
+    "@mymetaverse/global": "*"
     "@mymetaverse/utilities": "*"
     "@types/amqplib": ^0.10.1
     "@types/jest": ^29.4.0
@@ -1452,15 +1453,31 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@mymetaverse/utilities@*, @mymetaverse/utilities@workspace:packages/utilities":
+"@mymetaverse/global@*, @mymetaverse/global@workspace:shared/global":
   version: 0.0.0-use.local
-  resolution: "@mymetaverse/utilities@workspace:packages/utilities"
+  resolution: "@mymetaverse/global@workspace:shared/global"
   dependencies:
     "@types/jest": ^29.4.0
     "@types/node": ^18.13.0
     "@typescript-eslint/parser": ^5.51.0
     eslint: ^8.33.0
-    global: "*"
+    jest: ^29.4.2
+    merge: ^2.1.1
+    nodemon: ^2.0.20
+    ts-jest: ^29.0.5
+    typescript: ^4.9.5
+  languageName: unknown
+  linkType: soft
+
+"@mymetaverse/utilities@*, @mymetaverse/utilities@workspace:packages/utilities":
+  version: 0.0.0-use.local
+  resolution: "@mymetaverse/utilities@workspace:packages/utilities"
+  dependencies:
+    "@mymetaverse/global": "*"
+    "@types/jest": ^29.4.0
+    "@types/node": ^18.13.0
+    "@typescript-eslint/parser": ^5.51.0
+    eslint: ^8.33.0
     jest: ^29.4.2
     nodemon: ^2.0.20
     terser: ^5.16.4
@@ -4316,22 +4333,6 @@ __metadata:
   checksum: 10624f5a8ddb8634c22804c6b24f93fb591c3639a6bc78e3584e01a238fc6f7b7965824184e57d63f6df36980b6c191484ad7bc6c35a1599b8f1d64be64c2a4a
   languageName: node
   linkType: hard
-
-"global@*, global@workspace:shared/global":
-  version: 0.0.0-use.local
-  resolution: "global@workspace:shared/global"
-  dependencies:
-    "@types/jest": ^29.4.0
-    "@types/node": ^18.13.0
-    "@typescript-eslint/parser": ^5.51.0
-    eslint: ^8.33.0
-    jest: ^29.4.2
-    merge: ^2.1.1
-    nodemon: ^2.0.20
-    ts-jest: ^29.0.5
-    typescript: ^4.9.5
-  languageName: unknown
-  linkType: soft
 
 "globals@npm:^11.1.0":
   version: 11.12.0
