@@ -30,7 +30,7 @@ jobs:
 
       - name: Setting up no script execution for PR creation
         run: |
-          git config --global core.hooksPath /dev/null
+          rm -rf .git/hooks
 
       - name: Create Release Pull Request
         uses: changesets/action@v1
