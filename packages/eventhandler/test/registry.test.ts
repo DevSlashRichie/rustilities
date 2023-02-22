@@ -19,6 +19,7 @@ class MockListener {
   }
 }
 
+jest.useRealTimers();
 describe("EventRegistry", () => {
   let rabbitLocalHost = "";
   let container: StartedTestContainer;
