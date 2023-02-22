@@ -1,5 +1,4 @@
-import { Exception } from "utilities/src/exception";
-import { None } from "utilities/src/option";
+import { Exception, None } from "@mymetaverse/utilities";
 
 export class NotFoundConnectionError extends Exception {
   constructor(host: string) {

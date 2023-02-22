@@ -1,4 +1,4 @@
-import { Err, Ok } from "../src/result";
+import { Err, Ok } from "../src";
 
 describe("Result", () => {
   it("should create an Ok Result", () => {

@@ -1,5 +1,5 @@
-import { Exception } from "../src/exception";
-import { None, Option } from "../src/option";
+import { Exception } from "../src";
+import { None, Option } from "../src";
 
 describe("Exception", () => {
   it("should be able to create an Err", () => {

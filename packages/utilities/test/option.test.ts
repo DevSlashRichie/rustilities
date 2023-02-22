@@ -1,5 +1,5 @@
-import { Some, None, Option } from "../src/option";
-import { Err, Ok } from "../src/result";
+import { Some, None, Option } from "../src";
+import { Err, Ok } from "../src";
 
 describe("Option", () => {
   it("creates a success option", () => {

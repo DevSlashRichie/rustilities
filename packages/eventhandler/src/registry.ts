@@ -1,8 +1,7 @@
 import "reflect-metadata";
 import amqp, { Connection } from "amqplib";
 import { EventHandlerOptions } from "./annotations";
-import { Err, Ok, Result } from "utilities/src/result";
-import { EmptyElement } from "utilities/src/empty";
+import { Err, Ok, Result, EmptyElement } from "@mymetaverse/utilities";
 import { NotFoundConnectionError } from "./errors";
 
 type Listener<T extends object> = T;
