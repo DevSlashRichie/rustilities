@@ -1,5 +1,11 @@
 # utilities
 
+## 1.0.3
+
+### Patch Changes
+
+- eb9449b: added bundled dependency of internal globals
+
 ## 1.0.2
 
 ### Patch Changes

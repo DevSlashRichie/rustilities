@@ -1,5 +1,13 @@
 # eventhandler
 
+## 1.0.3
+
+### Patch Changes
+
+- eb9449b: added bundled dependency of internal globals
+- Updated dependencies [eb9449b]
+  - @mymetaverse/utilities@1.0.3
+
 ## 1.0.2
 
 ### Patch Changes

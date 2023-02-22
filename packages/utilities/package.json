@@ -1,6 +1,6 @@
 {
   "name": "@mymetaverse/utilities",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "corm utilities",
   "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
@@ -33,5 +33,7 @@
     "tsup": "^6.6.3",
     "typescript": "^4.9.5"
   },
-  "bundledDependencies": ["@mymetaverse/global"]
+  "bundledDependencies": [
+    "@mymetaverse/global"
+  ]
 }
