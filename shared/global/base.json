@@ -6,7 +6,6 @@
     "target": "ESNext",
     "moduleResolution": "node",
     "alwaysStrict": true,
-    "outDir": "./build",
     "declaration": true,
     "preserveSymlinks": true,
     "preserveWatchOutput": true,

@@ -1,4 +1,7 @@
 {
   "extends": "global/base.json",
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "build"
+  }
 }

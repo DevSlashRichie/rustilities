@@ -1,11 +1,14 @@
 {
   "name": "global",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "corm",
   "packageManager": "yarn@3.3.0",
-  "main": "src/index.ts",
+  "files": [
+    "base.json",
+    "jest.config.ts"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "echo",
     "test": "jest",
     "lint": "concurrently \"yarn:lint:*(!fix)\"",
     "lint:src": "eslint --ext .ts src",

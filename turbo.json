@@ -1,11 +1,13 @@
 {
   "$schema": "https://turborepo.org/schema.json",
+  "globalDependencies": [".env", "tsconfig.json"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["src/**/*.ts", "test/**/*.ts"],
-      "outputs": ["lib/**"],
-      "outputMode": "full"
+      "outputMode": "full",
+      "cache": true,
+      "outputs": ["build"],
+      "inputs": ["src/**/*.ts", "test/**/*.ts"]
     },
     "lint:check": {
       "inputs": ["src/**/*.ts", "test/**/*.ts"],
