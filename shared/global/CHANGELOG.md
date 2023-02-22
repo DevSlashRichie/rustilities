@@ -1,5 +1,11 @@
 # global
 
+## 1.0.1
+
+### Patch Changes
+
+- c9db81a: fixed prefix to import packages internally
+
 ## 1.0.0
 
 ### Major Changes
