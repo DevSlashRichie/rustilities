@@ -1,6 +1,6 @@
 {
   "name": "@mymetaverse/eventhandler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "event handler for rabbitmq",
   "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
