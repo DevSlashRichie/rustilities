@@ -1,17 +1,69 @@
+PASS test/annotations.test.ts
+  annotations
+    ✓ method should have metadata (1 ms)
+
 PASS test/errors/NotFoundConnectionError.test.ts
   NotFoundConnectionError
-    ✓ is instantiable (2 ms)
-    ✓ has a valid message
+    ✓ is instantiable (1 ms)
+    ✓ has a valid message (1 ms)
+
+  console.info
+    Opening a new  connection to amqp://localhost:49166
+
+      at Registry.openConnection (src/registry.ts:25:13)
+
+  console.info
+    Opening a new  connection to amqp://localhost:49166
+
+      at Registry.openConnection (src/registry.ts:25:13)
+
+  console.info
+    Opening a new  connection to amqp://localhost:49166
+
+      at Registry.openConnection (src/registry.ts:25:13)
+
+  console.debug
+    Found event handler annotation in test
+
+      at src/registry.ts:60:17
+          at Array.map (<anonymous>)
+
+  console.info
+    Opening a new  connection to amqp://localhost:49166
+
+      at Registry.openConnection (src/registry.ts:25:13)
+
+  console.debug
+    Found event handler annotation in test
+
+      at src/registry.ts:60:17
+          at Array.map (<anonymous>)
+
+  console.log
+    test has been called
+
+      at MockListener.test (test/registry.test.ts:13:13)
+
+PASS test/registry.test.ts (10.65 s)
+  EventRegistry
+    ✓ can instantiate (1 ms)
+    open connection
+      ✓ should open a new connection (70 ms)
+      ✓ callback should be able to close connection (51 ms)
+    add listener
+      ✓ should fail if host is not found (1 ms)
+      ✓ should not fail with a valid host (59 ms)
+      ✓ will announce the listener about incoming data (1094 ms)
 
 
 =============================== Coverage summary ===============================
-Statements   : 34.53% ( 67/194 )
-Branches     : 50% ( 1/2 )
-Functions    : 33.33% ( 1/3 )
-Lines        : 34.53% ( 67/194 )
+Statements   : 91.23% ( 177/194 )
+Branches     : 68.75% ( 11/16 )
+Functions    : 75% ( 6/8 )
+Lines        : 91.23% ( 177/194 )
 ================================================================================
-Test Suites: 1 passed, 1 total
-Tests:       2 passed, 2 total
+Test Suites: 3 passed, 3 total
+Tests:       9 passed, 9 total
 Snapshots:   0 total
-Time:        1.65 s
+Time:        10.891 s
 Ran all test suites.

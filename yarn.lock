@@ -1146,19 +1146,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@trendyol/jest-testcontainers@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "@trendyol/jest-testcontainers@npm:2.1.1"
-  dependencies:
-    cwd: ^0.10.0
-    node-duration: ^1.0.4
-    testcontainers: 4.7.0
-  peerDependencies:
-    jest-environment-node: ">=25"
-  checksum: 8cd3489adf77935c58c5b914bad97459313b6f41cb374eafa37fa618fcd78492f1bee7d0fa78b90c9fd491d072e95ec9c8bb158b601ec6f1be89443cff1e8bda
-  languageName: node
-  linkType: hard
-
 "@tsconfig/node10@npm:^1.0.7":
   version: 1.0.9
   resolution: "@tsconfig/node10@npm:1.0.9"
@@ -1253,15 +1240,6 @@ __metadata:
     "@types/node": "*"
     "@types/ssh2": "*"
   checksum: 1f23db30e6e9bdd4c6d6e43572fb7ac7251d106a1906a9f3faabac393897712a5a9cd5a471baedc0ac8055dab3f48eda331f41a1e2c7c6bbe3c7f433e039151c
-  languageName: node
-  linkType: hard
-
-"@types/dockerode@npm:^2.5.34":
-  version: 2.5.34
-  resolution: "@types/dockerode@npm:2.5.34"
-  dependencies:
-    "@types/node": "*"
-  checksum: 28966624eabbb687cf96c991e7d908a1336e34ba211ee08842fc5fa464a972e2f36942059304ac94a520a3a7c6994e353064deb0fd529ba9530ec89698b33268
   languageName: node
   linkType: hard
 
@@ -1781,13 +1759,6 @@ __metadata:
   version: 5.2.0
   resolution: "ansi-styles@npm:5.2.0"
   checksum: d7f4e97ce0623aea6bc0d90dcd28881ee04cba06c570b97fd3391bd7a268eedfd9d5e2dd4fdcbdd82b8105df5faf6f24aaedc08eaf3da898e702db5948f63469
-  languageName: node
-  linkType: hard
-
-"any-promise@npm:^1.1.0":
-  version: 1.3.0
-  resolution: "any-promise@npm:1.3.0"
-  checksum: 0ee8a9bdbe882c90464d75d1f55cf027f5458650c4bd1f0467e65aec38ccccda07ca5844969ee77ed46d04e7dded3eaceb027e8d32f385688523fe305fa7e1de
   languageName: node
   linkType: hard
 
@@ -2617,16 +2588,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cwd@npm:^0.10.0":
-  version: 0.10.0
-  resolution: "cwd@npm:0.10.0"
-  dependencies:
-    find-pkg: ^0.1.2
-    fs-exists-sync: ^0.1.0
-  checksum: 55ab180af86306fe7268c63dd87a737a12e1cb5146be6bcd7fe298df5f5c594cad85907a47fee02cee322d7dc98197a2b45e4d7ebfb0b2c93892bde7d787fe56
-  languageName: node
-  linkType: hard
-
 "dargs@npm:^7.0.0":
   version: 7.0.0
   resolution: "dargs@npm:7.0.0"
@@ -2760,7 +2721,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docker-compose@npm:^0.23.19, docker-compose@npm:^0.23.5":
+"docker-compose@npm:^0.23.19":
   version: 0.23.19
   resolution: "docker-compose@npm:0.23.19"
   dependencies:
@@ -2781,7 +2742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dockerode@npm:^3.2.1, dockerode@npm:^3.3.4":
+"dockerode@npm:^3.3.4":
   version: 3.3.4
   resolution: "dockerode@npm:3.3.4"
   dependencies:
@@ -3109,7 +3070,6 @@ eslint-plugin-tree-shaking@latest:
   version: 0.0.0-use.local
   resolution: "eventhandler@workspace:packages/eventhandler"
   dependencies:
-    "@trendyol/jest-testcontainers": ^2.1.1
     "@types/amqplib": ^0.10.1
     "@types/jest": ^29.4.0
     "@types/node": ^18.13.0
@@ -3147,15 +3107,6 @@ eslint-plugin-tree-shaking@latest:
   version: 0.1.2
   resolution: "exit@npm:0.1.2"
   checksum: abc407f07a875c3961e4781dfcb743b58d6c93de9ab263f4f8c9d23bb6da5f9b7764fc773f86b43dd88030444d5ab8abcb611cb680fba8ca075362b77114bba3
-  languageName: node
-  linkType: hard
-
-"expand-tilde@npm:^1.2.2":
-  version: 1.2.2
-  resolution: "expand-tilde@npm:1.2.2"
-  dependencies:
-    os-homedir: ^1.0.1
-  checksum: 18051cd104977bc06e2bb1347db9959b90504437beea0de6fd287a3c8c58b41e2330337bd189cfca2ee4be6bda9bf045f8c07daf23e622f85eb6ee1c420619a0
   languageName: node
   linkType: hard
 
@@ -3259,25 +3210,6 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"find-file-up@npm:^0.1.2":
-  version: 0.1.3
-  resolution: "find-file-up@npm:0.1.3"
-  dependencies:
-    fs-exists-sync: ^0.1.0
-    resolve-dir: ^0.1.0
-  checksum: 95475fee7b727266ec65312527c580eb4f01884592620296cf7859e72cce7f4f6a667c964ad6feeec53fb72a7c3991805532ed7a53d8224e9a1ccd88479cabce
-  languageName: node
-  linkType: hard
-
-"find-pkg@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "find-pkg@npm:0.1.2"
-  dependencies:
-    find-file-up: ^0.1.2
-  checksum: cd797bfa7dd419849559312cdd3aec767c39939e552daa92e53ff6b61108f331eb2c800d20a5973631eb894ea36c13dded01a868b10f457a685e0ae87a1746e1
-  languageName: node
-  linkType: hard
-
 "find-up@npm:^4.0.0, find-up@npm:^4.1.0":
   version: 4.1.0
   resolution: "find-up@npm:4.1.0"
@@ -3328,13 +3260,6 @@ eslint-plugin-tree-shaking@latest:
   version: 1.0.0
   resolution: "fs-constants@npm:1.0.0"
   checksum: 18f5b718371816155849475ac36c7d0b24d39a11d91348cfcb308b4494824413e03572c403c86d3a260e049465518c4f0d5bd00f0371cdfcad6d4f30a85b350d
-  languageName: node
-  linkType: hard
-
-"fs-exists-sync@npm:^0.1.0":
-  version: 0.1.0
-  resolution: "fs-exists-sync@npm:0.1.0"
-  checksum: 850a0d6e4c03a7bd2fd25043f77cd9d6be9c3b48bb99308bcfe9c94f3f92f65f2cd3fa036e13a1b0ba7a46d2e58792f53e578f01d75fbdcd56baeb9eed63b705
   languageName: node
   linkType: hard
 
@@ -3487,7 +3412,7 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6, glob@npm:^7.2.3":
+"glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.2.3":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
   dependencies:
@@ -3520,28 +3445,6 @@ eslint-plugin-tree-shaking@latest:
   dependencies:
     ini: ^1.3.4
   checksum: 10624f5a8ddb8634c22804c6b24f93fb591c3639a6bc78e3584e01a238fc6f7b7965824184e57d63f6df36980b6c191484ad7bc6c35a1599b8f1d64be64c2a4a
-  languageName: node
-  linkType: hard
-
-"global-modules@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "global-modules@npm:0.2.3"
-  dependencies:
-    global-prefix: ^0.1.4
-    is-windows: ^0.2.0
-  checksum: 3801788df54897d994c9c8f3d09f253d1379cd879ae61fcddbcc3ecdfdf6fe23a1edb983e8d4dd24cebf7e49823752e1cd29a2d33bdb4de587de8b4a85b17e24
-  languageName: node
-  linkType: hard
-
-"global-prefix@npm:^0.1.4":
-  version: 0.1.5
-  resolution: "global-prefix@npm:0.1.5"
-  dependencies:
-    homedir-polyfill: ^1.0.0
-    ini: ^1.3.4
-    is-windows: ^0.2.0
-    which: ^1.2.12
-  checksum: ea1b818a1851655ebb2341cdd5446da81c25f31ca6f0ac358a234cbed5442edc1bfa5628771466988d67d9fcc6ad09ca0e68a8d3d7e3d92f7de3aec87020e183
   languageName: node
   linkType: hard
 
@@ -3639,15 +3542,6 @@ eslint-plugin-tree-shaking@latest:
   dependencies:
     function-bind: ^1.1.1
   checksum: b9ad53d53be4af90ce5d1c38331e712522417d017d5ef1ebd0507e07c2fbad8686fffb8e12ddecd4c39ca9b9b47431afbb975b8abf7f3c3b82c98e9aad052792
-  languageName: node
-  linkType: hard
-
-"homedir-polyfill@npm:^1.0.0":
-  version: 1.0.3
-  resolution: "homedir-polyfill@npm:1.0.3"
-  dependencies:
-    parse-passwd: ^1.0.0
-  checksum: 18dd4db87052c6a2179d1813adea0c4bfcfa4f9996f0e226fefb29eb3d548e564350fa28ec46b0bf1fbc0a1d2d6922ceceb80093115ea45ff8842a4990139250
   languageName: node
   linkType: hard
 
@@ -3934,13 +3828,6 @@ eslint-plugin-tree-shaking@latest:
   dependencies:
     text-extensions: ^1.0.0
   checksum: fb5d78752c22b3f73a7c9540768f765ffcfa38c9e421e2b9af869565307fa1ae5e3d3a2ba016a43549742856846566d327da406e94a5846ec838a288b1704fd2
-  languageName: node
-  linkType: hard
-
-"is-windows@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "is-windows@npm:0.2.0"
-  checksum: 3df25afda2fd9f3926b08cebacf1fc0a1fe7805a2cb73ef0f1b911c949e4e7648c4623979d74b4502bdd9af69471101eb6051b751595f7f88569148186cf7a7a
   languageName: node
   linkType: hard
 
@@ -5096,13 +4983,6 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"node-duration@npm:^1.0.4":
-  version: 1.0.4
-  resolution: "node-duration@npm:1.0.4"
-  checksum: 59d8ac0822f7325dc8e2eecadfe07ceb88a803dc38338b8d2e33bff090e05485b406374d3d08975c336ada12daa8f226aae64689df51373623c469351f3f36b4
-  languageName: node
-  linkType: hard
-
 "node-fetch@npm:^2.6.9":
   version: 2.6.9
   resolution: "node-fetch@npm:2.6.9"
@@ -5295,13 +5175,6 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"os-homedir@npm:^1.0.1":
-  version: 1.0.2
-  resolution: "os-homedir@npm:1.0.2"
-  checksum: af609f5a7ab72de2f6ca9be6d6b91a599777afc122ac5cad47e126c1f67c176fe9b52516b9eeca1ff6ca0ab8587fe66208bc85e40a3940125f03cdb91408e9d2
-  languageName: node
-  linkType: hard
-
 "p-limit@npm:^2.2.0":
   version: 2.3.0
   resolution: "p-limit@npm:2.3.0"
@@ -5372,13 +5245,6 @@ eslint-plugin-tree-shaking@latest:
     json-parse-even-better-errors: ^2.3.0
     lines-and-columns: ^1.1.6
   checksum: 62085b17d64da57f40f6afc2ac1f4d95def18c4323577e1eced571db75d9ab59b297d1d10582920f84b15985cbfc6b6d450ccbf317644cfa176f3ed982ad87e2
-  languageName: node
-  linkType: hard
-
-"parse-passwd@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "parse-passwd@npm:1.0.0"
-  checksum: 4e55e0231d58f828a41d0f1da2bf2ff7bcef8f4cb6146e69d16ce499190de58b06199e6bd9b17fbf0d4d8aef9052099cdf8c4f13a6294b1a522e8e958073066e
   languageName: node
   linkType: hard
 
@@ -5773,16 +5639,6 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"resolve-dir@npm:^0.1.0":
-  version: 0.1.1
-  resolution: "resolve-dir@npm:0.1.1"
-  dependencies:
-    expand-tilde: ^1.2.2
-    global-modules: ^0.2.3
-  checksum: cc3e1885938f8fe9656a6faa651e21730d369260e907b8dd7c847a4aa18db348ac08ee0dbf2d6f87e2ba08715fb109432ec773bbb31698381bd2a48c0ea66072
-  languageName: node
-  linkType: hard
-
 "resolve-from@npm:5.0.0, resolve-from@npm:^5.0.0":
   version: 5.0.0
   resolution: "resolve-from@npm:5.0.0"
@@ -5896,7 +5752,7 @@ eslint-plugin-tree-shaking@latest:
     protoc: ^1.1.3
     ts-node: ^10.9.1
     ts-proto: ^1.135.3
-    turbo: ^1.6.3
+    turbo: ^1.8.1
     typescript: ^4.9.4
     yargs: ^17.6.2
   languageName: unknown
@@ -6177,15 +6033,6 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"stream-to-array@npm:^2.3.0":
-  version: 2.3.0
-  resolution: "stream-to-array@npm:2.3.0"
-  dependencies:
-    any-promise: ^1.1.0
-  checksum: 7feaf63b38399b850615e6ffcaa951e96e4c8f46745dbce4b553a94c5dc43966933813747014935a3ff97793e7f30a65270bde19f82b2932871a1879229a77cf
-  languageName: node
-  linkType: hard
-
 "string-length@npm:^4.0.1":
   version: 4.0.2
   resolution: "string-length@npm:4.0.2"
@@ -6305,7 +6152,7 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"tar-fs@npm:^2.1.0, tar-fs@npm:^2.1.1":
+"tar-fs@npm:^2.1.1":
   version: 2.1.1
   resolution: "tar-fs@npm:2.1.1"
   dependencies:
@@ -6364,25 +6211,6 @@ eslint-plugin-tree-shaking@latest:
     glob: ^7.1.4
     minimatch: ^3.0.4
   checksum: 3b34a3d77165a2cb82b34014b3aba93b1c4637a5011807557dc2f3da826c59975a5ccad765721c4648b39817e3472789f9b0fa98fc854c5c1c7a1e632aacdc28
-  languageName: node
-  linkType: hard
-
-"testcontainers@npm:4.7.0":
-  version: 4.7.0
-  resolution: "testcontainers@npm:4.7.0"
-  dependencies:
-    "@types/dockerode": ^2.5.34
-    byline: ^5.0.0
-    debug: ^4.1.1
-    docker-compose: ^0.23.5
-    dockerode: ^3.2.1
-    get-port: ^5.1.1
-    glob: ^7.1.6
-    node-duration: ^1.0.4
-    slash: ^3.0.0
-    stream-to-array: ^2.3.0
-    tar-fs: ^2.1.0
-  checksum: 8828eed434bbb24ece306ea1776ce10477aed73a03c0116db13ba4397eca3de80f339afd246e97054963592aba44fbad474527ec26d551eaa316399b21e38189
   languageName: node
   linkType: hard
 
@@ -6618,58 +6446,58 @@ eslint-plugin-tree-shaking@latest:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:1.7.4":
-  version: 1.7.4
-  resolution: "turbo-darwin-64@npm:1.7.4"
+"turbo-darwin-64@npm:1.8.1":
+  version: 1.8.1
+  resolution: "turbo-darwin-64@npm:1.8.1"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:1.7.4":
-  version: 1.7.4
-  resolution: "turbo-darwin-arm64@npm:1.7.4"
+"turbo-darwin-arm64@npm:1.8.1":
+  version: 1.8.1
+  resolution: "turbo-darwin-arm64@npm:1.8.1"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:1.7.4":
-  version: 1.7.4
-  resolution: "turbo-linux-64@npm:1.7.4"
+"turbo-linux-64@npm:1.8.1":
+  version: 1.8.1
+  resolution: "turbo-linux-64@npm:1.8.1"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:1.7.4":
-  version: 1.7.4
-  resolution: "turbo-linux-arm64@npm:1.7.4"
+"turbo-linux-arm64@npm:1.8.1":
+  version: 1.8.1
+  resolution: "turbo-linux-arm64@npm:1.8.1"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:1.7.4":
-  version: 1.7.4
-  resolution: "turbo-windows-64@npm:1.7.4"
+"turbo-windows-64@npm:1.8.1":
+  version: 1.8.1
+  resolution: "turbo-windows-64@npm:1.8.1"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:1.7.4":
-  version: 1.7.4
-  resolution: "turbo-windows-arm64@npm:1.7.4"
+"turbo-windows-arm64@npm:1.8.1":
+  version: 1.8.1
+  resolution: "turbo-windows-arm64@npm:1.8.1"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo@npm:^1.6.3":
-  version: 1.7.4
-  resolution: "turbo@npm:1.7.4"
+"turbo@npm:^1.8.1":
+  version: 1.8.1
+  resolution: "turbo@npm:1.8.1"
   dependencies:
-    turbo-darwin-64: 1.7.4
-    turbo-darwin-arm64: 1.7.4
-    turbo-linux-64: 1.7.4
-    turbo-linux-arm64: 1.7.4
-    turbo-windows-64: 1.7.4
-    turbo-windows-arm64: 1.7.4
+    turbo-darwin-64: 1.8.1
+    turbo-darwin-arm64: 1.8.1
+    turbo-linux-64: 1.8.1
+    turbo-linux-arm64: 1.8.1
+    turbo-windows-64: 1.8.1
+    turbo-windows-arm64: 1.8.1
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -6685,7 +6513,7 @@ eslint-plugin-tree-shaking@latest:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: c4387cfee36c57dd1490e9b2452888d8450faa390aec5bc148389b426bc079d03044891d61ad84a6a3a7454e66dfbe9e9cfba05f636b36fef7ece7af275ef9ce
+  checksum: d222bcf1995f39675d0d2c47f21ed9e72fb249bfb95c469f0729e97c80eedf921e22addfa994da961230a0e8b1d1c69b5037815c396cb4d7ac95708553dcaabb
   languageName: node
   linkType: hard
 
@@ -6954,17 +6782,6 @@ eslint-plugin-tree-shaking@latest:
     tr46: ~0.0.3
     webidl-conversions: ^3.0.0
   checksum: b8daed4ad3356cc4899048a15b2c143a9aed0dfae1f611ebd55073310c7b910f522ad75d727346ad64203d7e6c79ef25eafd465f4d12775ca44b90fa82ed9e2c
-  languageName: node
-  linkType: hard
-
-"which@npm:^1.2.12":
-  version: 1.3.1
-  resolution: "which@npm:1.3.1"
-  dependencies:
-    isexe: ^2.0.0
-  bin:
-    which: ./bin/which
-  checksum: f2e185c6242244b8426c9df1510e86629192d93c1a986a7d2a591f2c24869e7ffd03d6dac07ca863b2e4c06f59a4cc9916c585b72ee9fa1aa609d0124df15e04
   languageName: node
   linkType: hard
 

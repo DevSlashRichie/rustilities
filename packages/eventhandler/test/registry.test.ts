@@ -32,7 +32,6 @@ describe("EventRegistry", () => {
     rabbitLocalHost = `amqp://${container.getHost()}:${container.getMappedPort(
       5672
     )}`;
-    console.log(`RabbitMQ is running on ${rabbitLocalHost}`);
   });
 
   afterAll(async () => {
