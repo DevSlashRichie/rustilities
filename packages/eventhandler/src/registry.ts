@@ -3,6 +3,7 @@ import amqp, { Connection } from "amqplib";
 import { EventHandlerOptions } from "./annotations";
 import { Err, Ok, Result, EmptyElement } from "@mymetaverse/utilities";
 import { NotFoundConnectionError } from "./errors";
+import { CouldNotParsePayloadError } from "./errors/could-not-parse-payload-error";
 
 type Listener<T extends object> = T;
 
@@ -89,16 +90,25 @@ export class Registry {
           async (msg) => {
             let payload: any | null = null;
 
-            if (msg) {
-              payload =
-                !consumerOptions ||
-                !consumerOptions.local ||
-                !consumerOptions.local.noParse
-                  ? JSON.parse(msg.content.toString())
-                  : msg.content;
-            }
+            try {
+              if (msg) {
+                payload =
+                  !consumerOptions ||
+                  !consumerOptions.local ||
+                  !consumerOptions.local.noParse
+                    ? JSON.parse(msg.content.toString())
+                    : msg.content;
+              }
 
-            descriptor.value.call(listener, payload, msg, channel);
+              descriptor.value.call(listener, payload, msg, channel);
+            } catch (err) {
+              console.error(
+                new CouldNotParsePayloadError(
+                  msg?.content.toString(),
+                  err instanceof Error ? err : undefined
+                )
+              );
+            }
           },
           consumerOptions?.rabbit
         );
