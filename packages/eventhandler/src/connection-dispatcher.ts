@@ -1,6 +1,6 @@
 import { Channel, Options } from "amqplib";
 import { WrappedConnection } from "./wrapped-connection";
-import Publish = Options.Publish;
+const Publish = Options.Publish;
 
 interface PublishOptions {
   routingKey?: string;
