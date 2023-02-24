@@ -59,7 +59,7 @@ export class Option<T> {
     return Option.of(mapper(this.value as T));
   }
 
-  public mapOr(defaultValue: T, mapper: (value: T) => T): T {
+  public mapOr<U>(defaultValue: U, mapper: (value: T) => U): U {
     if (this.isNone()) {
       return defaultValue;
     }

@@ -88,6 +88,18 @@ describe("Option", () => {
       const opt = None<string>();
       expect(opt.mapOr("default", (s) => s)).toBe("default");
     });
+
+    describe("but with custom U", () => {
+      it("when there is some", () => {
+        const opt = Some("str");
+        expect(opt.mapOr(0, (s) => s.length)).toBe(3);
+      });
+
+      it("when is empty", () => {
+        const opt = None<string>();
+        expect(opt.mapOr(0, (s) => s.length)).toBe(0);
+      });
+    });
   });
 
   describe("okOr", () => {
