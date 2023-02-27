@@ -1,5 +1,38 @@
 # eventhandler
 
+## 1.1.0
+
+### Minor Changes
+
+- 531765b: EventHandler will now allow to dispatch messages
+
+  # Summary
+
+  The biggest change of this update is that EventHandler will now allow to dispatch messages.
+  You can achieve this by first creating a `WrappedConnection` from a registry:
+
+  ```typescript
+  const registry = new Registry();
+  const { connection, close } = await registry.openConnection(
+    "amqp://localhost"
+  );
+
+  const dispatcher = await connection.openDispatcher("my-exchange");
+  ```
+
+  Also, the way to addListeners changed because now you need to pass the `WrappedConnection` into the `addListeners` function.
+
+### Patch Changes
+
+- af59aa2: Invalid payloads will now get caught and service won't crash.
+
+  If for any reason the publisher decides to send a message not JSON compatible, the handler
+  will catch and show the error message by instantiating a new event called `CouldNotParsePayloadError`
+  which will first try to include the erroneous payload and parent error for debug.
+
+- Updated dependencies [531765b]
+  - @mymetaverse/utilities@1.0.4
+
 ## 1.0.4
 
 ### Patch Changes
