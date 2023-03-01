@@ -1,4 +1,4 @@
-import { Err, Ok } from "../src";
+import { Err, Ok, Result } from "../src";
 
 describe("Result", () => {
   it("should create an Ok Result", () => {
@@ -113,6 +113,53 @@ describe("Result", () => {
       expect(result.mapErr((value) => new Error(value.message + "2"))).toEqual(
         Err(new Error("test2"))
       );
+    });
+  });
+
+  describe("from throw", () => {
+    it("should return Ok", () => {
+      const result = Result.fromThrow(() => "test");
+      expect(result).toEqual(Ok("test"));
+    });
+
+    it("should return Err", () => {
+      const result = Result.fromThrow(() => {
+        throw new Error("test");
+      });
+      expect(result).toEqual(Err(new Error("test")));
+    });
+  });
+
+  describe("equals", () => {
+    it("should return true when both are Ok", () => {
+      const result1 = Ok("test");
+      const result2 = Ok("test");
+      expect(result1.equals(result2)).toBe(true);
+    });
+
+    it("should return false when both are Ok but the value is different", () => {
+      const result1 = Ok("test");
+      const result2 = Ok("test2");
+      expect(result1.equals(result2)).toBe(false);
+    });
+
+    it("should return true when both are Err", () => {
+      const err = new Error("test");
+      const result1 = Err(err);
+      const result2 = Err(err);
+      expect(result1.equals(result2)).toBe(true);
+    });
+
+    it("should return false when both are Err but the value is different", () => {
+      const result1 = Err(new Error("test"));
+      const result2 = Err(new Error("test2"));
+      expect(result1.equals(result2)).toBe(false);
+    });
+
+    it("should return false when one is Ok and the other is Err", () => {
+      const result1 = Ok("test");
+      const result2 = Err(new Error("test"));
+      expect(result1.equals(result2)).toBe(false);
     });
   });
 });

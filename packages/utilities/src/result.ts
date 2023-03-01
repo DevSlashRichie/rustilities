@@ -15,6 +15,14 @@ export class Result<T, E extends Error> {
     return new Result<U, O>(undefined, error);
   }
 
+  public static fromThrow<U, O extends Error>(f: () => U): Result<U, O> {
+    try {
+      return Result.Ok(f() as U);
+    } catch (e) {
+      return Result.Err(e as O);
+    }
+  }
+
   public isOk(): boolean {
     return typeof this.value !== "undefined";
   }
@@ -73,6 +81,16 @@ export class Result<T, E extends Error> {
       return Result.Err(fn(this.error as E));
     }
     return Result.Ok(this.value as T);
+  }
+
+  public equals<U, O extends Error>(other: Result<U, O>): boolean {
+    if (this.isOk() && other.isOk()) {
+      return this.value === other.value;
+    }
+    if (this.isErr() && other.isErr()) {
+      return this.error === other.error;
+    }
+    return false;
   }
 }
 
