@@ -1,5 +1,13 @@
 # eventhandler
 
+## 1.1.1
+
+### Patch Changes
+
+- 3be247d: Exported from root WrappedConnection and ConnectionDispatcher
+- Updated dependencies [3be247d]
+  - @mymetaverse/utilities@1.0.5
+
 ## 1.1.0
 
 ### Minor Changes
