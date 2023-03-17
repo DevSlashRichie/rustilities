@@ -1,12 +1,14 @@
 {
+  "extends": "@mymetaverse/global/base.json",
+  "include": ["src/**/*"],
   "compilerOptions": {
+    "outDir": "build",
     "esModuleInterop": true,
     "lib": ["esnext"],
     "module": "commonjs",
     "target": "ESNext",
     "moduleResolution": "node",
     "alwaysStrict": true,
-    "outDir": "./build",
     "declaration": true,
     "preserveSymlinks": true,
     "preserveWatchOutput": true,
@@ -19,9 +21,6 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "strict": true,
-    "resolveJsonModule": true,
-    "rootDirs": ["src", "test"]
-  },
-  "include": ["test/**/*.ts", "scripts/**/*.ts"],
-  "files": ["src/index.ts"]
+    "resolveJsonModule": true
+  }
 }
