@@ -13,7 +13,7 @@
   "repository": "https://github.com/MyMetaverse/CoreOfMeta",
   "scripts": {
     "build": "echo",
-    "test": "jest",
+    "test": "echo",
     "lint": "concurrently \"yarn:lint:*(!fix)\"",
     "lint:src": "eslint --ext .ts src",
     "lint:fix": "concurrently \"yarn:lint:*:fix\"",

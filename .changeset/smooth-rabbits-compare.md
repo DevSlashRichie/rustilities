@@ -1,0 +1,5 @@
+---
+"@mymetaverse/mongolia": patch
+---
+
+Init
