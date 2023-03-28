@@ -1,4 +1,5 @@
 import { Channel, Options } from "amqplib";
+import { ExchangeIdentifier } from "./entities";
 import { WrappedConnection } from "./wrapped-connection";
 
 interface PublishOptions {
@@ -11,6 +12,13 @@ export class ConnectionDispatcher {
     public readonly channel: Channel,
     public readonly exchange: string
   ) {}
+
+  /**
+   * Assert the creation of the exchange
+   */
+  public async assert({ name, type, options }: ExchangeIdentifier) {
+    await this.channel.assertExchange(name, type, options);
+  }
 
   /**
    * Close the channel
