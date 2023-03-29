@@ -1,5 +1,11 @@
 # eventhandler
 
+## 1.1.3
+
+### Patch Changes
+
+- 26d6964: Broadcasting a message now returns a Result instead of throwing an exception
+
 ## 1.1.2
 
 ### Patch Changes
