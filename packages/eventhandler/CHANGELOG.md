@@ -1,5 +1,11 @@
 # eventhandler
 
+## 1.1.4
+
+### Patch Changes
+
+- d56e3dc: assert an exchange now omits name since it's already declared
+
 ## 1.1.3
 
 ### Patch Changes
