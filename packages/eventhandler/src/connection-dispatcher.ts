@@ -32,8 +32,8 @@ export class ConnectionDispatcher {
   /**
    * Assert the creation of the exchange
    */
-  public async assert({ name, type, options }: ExchangeIdentifier) {
-    await this.channel.assertExchange(name, type, options);
+  public async assert({ type, options }: Omit<ExchangeIdentifier, "name">) {
+    await this.channel.assertExchange(this.exchange, type, options);
   }
 
   /**
