@@ -2,9 +2,14 @@ export class Result<T, E extends Error> {
   private readonly value?: T;
   private readonly error?: E;
 
+  // state lock
+  private readonly _isOk: boolean;
+
   private constructor(value: T | undefined, error: E | undefined) {
     this.value = value;
     this.error = error;
+
+    this._isOk = !value && !error ? true : !!value;
   }
 
   public static Ok<U, O extends Error>(value: U): Result<U, O> {
@@ -24,11 +29,11 @@ export class Result<T, E extends Error> {
   }
 
   public isOk(): boolean {
-    return typeof this.value !== "undefined";
+    return this._isOk;
   }
 
   public isErr(): boolean {
-    return typeof this.error !== "undefined";
+    return !this._isOk;
   }
 
   public unwrap(): T {
