@@ -18,12 +18,4 @@ export class WrappedConnection {
   public async openDispatcher(exchange: string): Promise<ConnectionDispatcher> {
     return await ConnectionDispatcher.fromConnection(this, exchange);
   }
-
-  /**
-   * Open a dispatcher and assert it's configuration.
-   */
-  public async assertAndOpenDispatcher(exchange: string, type: string) {
-    const d = await ConnectionDispatcher.fromConnection(this, exchange);
-    return d;
-  }
 }

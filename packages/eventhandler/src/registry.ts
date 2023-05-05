@@ -47,8 +47,6 @@ export class Registry {
    * @returns an object which includes `close` method to later close the connection and `connection` which is the opened connection.
    */
   public async openConnection(host: string) {
-    console.info(`Opening a new  connection to ${host}.`);
-
     const rawConnection = await amqp.connect(host);
     const connection = new WrappedConnection(rawConnection);
     this.connections[host] = connection;
@@ -198,6 +196,18 @@ export class Registry {
     });
   }
 
+  private async closeListenerConnection(listener: Listener) {
+    const connection = listener.__connection.map((it) => it.close());
+
+    if (connection.isSome()) await connection.unwrap();
+
+    const closeChannels = listener.__channels.map((it) =>
+      it.map((it) => it.close())
+    );
+
+    if (closeChannels.isSome()) await Promise.all(closeChannels.unwrap());
+  }
+
   /**
    * Remove a listener from the listening pool.
    * @param listener the listener to be unregistered.
@@ -211,19 +221,38 @@ export class Registry {
       if (it === listener) {
         this.listeners.delete(it);
         if (closeConnection) {
-          const connection = listener.__connection.map((it) => it.close());
-
-          if (connection.isSome()) await connection.unwrap();
-
-          const closeChannels = listener.__channels.map((it) =>
-            it.map((it) => it.close())
-          );
-
-          if (closeChannels.isSome()) await Promise.all(closeChannels.unwrap());
+          this.closeListenerConnection(listener);
         }
       }
     });
 
     await Promise.all(promises);
+  }
+
+  /**
+   * Close all listeners and their connections.
+   **/
+  public async closeAllListeners() {
+    const promises = Array.from(this.listeners).map(async (it) => {
+      await this.closeListenerConnection(it);
+    });
+
+    await Promise.all(promises);
+
+    this.listeners.clear();
+  }
+
+  /**
+   * Close all connections and their listeners but also the opened connections.
+   *
+   **/
+  public async close() {
+    await this.closeAllListeners();
+
+    const promises = Object.values(this.connections).map(async (it) => {
+      await it.close();
+    });
+
+    Promise.all(promises);
   }
 }
