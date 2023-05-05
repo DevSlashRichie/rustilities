@@ -55,7 +55,7 @@ const fromNullable = Option.fromNullable(null);
 
 ```
 
-There's an additional package called "Exception" which is a wrapper for creating
+There's an additional package called `Exception` which is a wrapper for creating
 cleaner errors.
 
 This wrapper can be used without to much context our you can extend class 
