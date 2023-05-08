@@ -1,5 +1,5 @@
-import { Exception } from "../src";
-import { None, Option } from "../src";
+import { Exception, AnonymousException, ExceptionLike } from "../src";
+import { None, Option, Some } from "../src";
 
 describe("Exception", () => {
   it("should be able to create an Err", () => {
@@ -57,6 +57,43 @@ describe("Exception", () => {
     it("returns complete message with a message", () => {
       const err = Exception.create("test", None());
       expect(err.display()).toBe("Exception: test");
+    });
+  });
+});
+
+describe("AnonymousException", () => {
+  it("should be ExceptionLike", () => {
+    const err = new AnonymousException("test-name", "test", None());
+    expect(err).not.toBeNull();
+    expect(err.message).toBe("test");
+    expect(err.name).toBe("test-name");
+  });
+
+  describe("with parent", () => {
+    it("generic-error return complete message", () => {
+      const error = new AnonymousException(
+        "test-name",
+        "test",
+        Some(new Error("parent"))
+      );
+      expect(error.display()).toBe("test-name: test Error: parent");
+    });
+
+    it("exception return complete message", () => {
+      const parent = new AnonymousException("parent-name", "parent", None());
+      const error = new AnonymousException("test-name", "test", Some(parent));
+      expect(error.display()).toBe("test-name: test parent-name: parent");
+    });
+  });
+
+  describe("with no parent", () => {
+    let error: ExceptionLike;
+    beforeEach(() => {
+      error = new AnonymousException("test-name", "test", None());
+    });
+
+    it("return complete message", () => {
+      expect(error.display()).toBe("test-name: test");
     });
   });
 });
