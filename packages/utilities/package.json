@@ -1,6 +1,6 @@
 {
   "name": "@mymetaverse/utilities",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "corm utilities",
   "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
