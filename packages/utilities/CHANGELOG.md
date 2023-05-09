@@ -1,5 +1,11 @@
 # utilities
 
+## 1.0.8
+
+### Patch Changes
+
+- bcf8cd9: In Result<T, E>, the E won't require to extends Error. It can be any element.
+
 ## 1.0.7
 
 ### Patch Changes
