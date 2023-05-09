@@ -1,7 +1,7 @@
 /**
  * Result is a type that represents either success (Ok) or failure (Err).
  **/
-export class Result<T, E extends Error> {
+export class Result<T, E> {
   private readonly value?: T;
   private readonly error?: E;
 
@@ -20,7 +20,7 @@ export class Result<T, E extends Error> {
    * This will create a Result with a valid value.
    * @returns the Result.
    **/
-  public static Ok<U, O extends Error>(value: U): Result<U, O> {
+  public static Ok<U, O>(value: U): Result<U, O> {
     return new Result<U, O>(value, undefined);
   }
 
@@ -28,7 +28,7 @@ export class Result<T, E extends Error> {
    * This will create a Result with an error.
    * @returns the Result.
    **/
-  public static Err<U, O extends Error>(error: O): Result<U, O> {
+  public static Err<U, O>(error: O): Result<U, O> {
     return new Result<U, O>(undefined, error);
   }
 
@@ -38,7 +38,7 @@ export class Result<T, E extends Error> {
    *
    * @returns the Result.
    **/
-  public static fromThrow<U, O extends Error>(f: () => U): Result<U, O> {
+  public static fromThrow<U, O>(f: () => U): Result<U, O> {
     try {
       return Result.Ok(f() as U);
     } catch (e) {
@@ -134,7 +134,7 @@ export class Result<T, E extends Error> {
    * Use this method to modify the error of the Result while using it.
    * @returns the Result itself with the error possibly mapped.
    **/
-  public mapErr<O extends Error>(fn: (error: E) => O): Result<T, O> {
+  public mapErr<O>(fn: (error: E) => O): Result<T, O> {
     if (this.isErr()) {
       return Result.Err(fn(this.error as E));
     }
@@ -145,7 +145,7 @@ export class Result<T, E extends Error> {
    * Use this method to modify the error of the Result while using it.
    * @returns the Result itself with the error possibly mapped.
    **/
-  public equals<U, O extends Error>(other: Result<U, O>): boolean {
+  public equals<U, O>(other: Result<U, O>): boolean {
     if (this.isOk() && other.isOk()) {
       return this.value === other.value;
     }
@@ -160,7 +160,7 @@ export class Result<T, E extends Error> {
  * This will create a Result with a valid value.
  * @returns the Result.
  **/
-export function Ok<T, E extends Error>(value: T): Result<T, E> {
+export function Ok<T, E>(value: T): Result<T, E> {
   return Result.Ok(value);
 }
 
@@ -168,6 +168,6 @@ export function Ok<T, E extends Error>(value: T): Result<T, E> {
  * This will create a Result with an error.
  * @returns the Result.
  **/
-export function Err<T, E extends Error>(error: E): Result<T, E> {
+export function Err<T, E>(error: E): Result<T, E> {
   return Result.Err(error);
 }

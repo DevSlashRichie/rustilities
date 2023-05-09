@@ -86,7 +86,7 @@ describe("Result", () => {
   describe("unwrapOrElse", () => {
     it("should unwrap an Ok Result", () => {
       const result = Ok("test");
-      expect(result.unwrapOrElse((error) => error.message + "2")).toBe("test");
+      expect(result.unwrapOrElse((error) => String(error) + "2")).toBe("test");
     });
 
     it("should return the default value when unwrapping an Err Result", () => {
