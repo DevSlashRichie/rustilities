@@ -28,6 +28,12 @@ describe("Option", () => {
       const option = Option.fromNullable(undefined);
       expect(option.isNone()).toBe(true);
     });
+
+    it("creates some from value", () => {
+      const option = Option.fromNullable(1);
+      expect(option.isSome()).toBe(true);
+      expect(option.unwrap()).toBe(1);
+    });
   });
 
   describe("unwrap", () => {

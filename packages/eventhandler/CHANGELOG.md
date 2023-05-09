@@ -1,5 +1,23 @@
 # eventhandler
 
+## 1.1.5
+
+### Patch Changes
+
+- 51d600b: Registry now owns a way to complety close all dependencies to it.
+
+  Example:
+
+  ```typescript
+  const registry = new Registry();
+
+  // this will close all available listener but mantain connections open.
+  await registry.closeAllListeners();
+
+  // this will also close the oppened connections.
+  await registry.close();
+  ```
+
 ## 1.1.4
 
 ### Patch Changes

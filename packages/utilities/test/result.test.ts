@@ -1,11 +1,20 @@
 import { Err, Ok, Result } from "../src";
 
 describe("Result", () => {
-  it("should create an Ok Result", () => {
-    const result = Ok("test");
-    expect(result.isOk()).toBe(true);
-    expect(result.isErr()).toBe(false);
-    expect(result.unwrap()).toBe("test");
+  describe("should create an Ok Result", () => {
+    it("when a no-null value is passed", () => {
+      const result = Ok("test");
+      expect(result.isOk()).toBe(true);
+      expect(result.isErr()).toBe(false);
+      expect(result.unwrap()).toBe("test");
+    });
+
+    it("when a null value is passed", () => {
+      const result = Ok(null);
+      expect(result.isOk()).toBe(true);
+      expect(result.isErr()).toBe(false);
+      expect(result.unwrap()).toBe(null);
+    });
   });
 
   it("should create an Err Result", () => {
