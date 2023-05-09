@@ -1,10 +1,17 @@
 import { Option } from "./option";
 
+/**
+ * This interface represents an exception.
+ **/
 export abstract class ExceptionLike extends Error {
   constructor(message: string) {
     super(message);
   }
 
+  /**
+   * Use this method to display the exception in a human readable format.
+   * @returns a string
+   **/
   public abstract display(): string;
 
   protected _display(name: string, parent: Option<Error>) {
@@ -22,6 +29,10 @@ export abstract class ExceptionLike extends Error {
   }
 }
 
+/**
+ * Use this class incase you want to create an exception without an name.
+ * The name will be passed as a parameter.
+ **/
 export class AnonymousException extends ExceptionLike {
   public readonly parent: Option<Error>;
   public readonly errorName: string;
