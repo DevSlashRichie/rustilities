@@ -1,5 +1,11 @@
 # utilities
 
+## 1.0.9
+
+### Patch Changes
+
+- 4ff8e86: Result now includes ExceptionLike as default paramter
+
 ## 1.0.8
 
 ### Patch Changes
