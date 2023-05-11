@@ -1,5 +1,11 @@
 # utilities
 
+## 1.0.10
+
+### Patch Changes
+
+- 90a5d34: Bump from throw into result.ts
+
 ## 1.0.9
 
 ### Patch Changes
