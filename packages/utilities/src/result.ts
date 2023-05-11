@@ -1,7 +1,9 @@
+import { ExceptionLike } from "./exception";
+
 /**
  * Result is a type that represents either success (Ok) or failure (Err).
  **/
-export class Result<T, E> {
+export class Result<T, E = ExceptionLike> {
   private readonly value?: T;
   private readonly error?: E;
 
