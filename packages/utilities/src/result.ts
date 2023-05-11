@@ -49,6 +49,20 @@ export class Result<T, E = ExceptionLike> {
   }
 
   /**
+   * Will create an Errored Result if the promise rejects.
+   * Otherwise it will create an Ok Result.
+   *
+   * @returns the Result.
+   **/
+  public static async fromPromise<U, O>(f: Promise<U>): Promise<Result<U, O>> {
+    try {
+      return Result.Ok(await f);
+    } catch (e) {
+      return Result.Err(e as O);
+    }
+  }
+
+  /**
    * @returns returns true if the Result is Ok.
    **/
   public isOk(): boolean {

@@ -139,6 +139,20 @@ describe("Result", () => {
     });
   });
 
+  describe("from promise", () => {
+    it("should return Ok", async () => {
+      const result = await Result.fromPromise(Promise.resolve("test"));
+      expect(result).toEqual(Ok("test"));
+    });
+
+    it("should return Err", async () => {
+      const result = await Result.fromPromise(
+        Promise.reject(new Error("test"))
+      );
+      expect(result).toEqual(Err(new Error("test")));
+    });
+  });
+
   describe("equals", () => {
     it("should return true when both are Ok", () => {
       const result1 = Ok("test");
