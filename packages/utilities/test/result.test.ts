@@ -185,4 +185,36 @@ describe("Result", () => {
       expect(result1.equals(result2)).toBe(false);
     });
   });
+
+  describe("match", () => {
+    it("brace Ok", () => {
+      const result = Ok("test");
+
+      const spy = jest.fn((param: string) => param);
+
+      const r = result.match({
+        Ok: (value) => spy(value),
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+        Err: (_) => "err",
+      });
+
+      expect(spy).toBeCalledWith("test");
+      expect(r).toBe("test");
+    });
+
+    it("brace Err", () => {
+      const result = Err("err");
+
+      const spy = jest.fn((param: string) => param);
+
+      const r = result.match({
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+        Ok: (_) => "ok",
+        Err: (error) => spy(error),
+      });
+
+      expect(spy).toBeCalledWith("err");
+      expect(r).toBe("err");
+    });
+  });
 });

@@ -143,4 +143,36 @@ describe("Option", () => {
       expect(opt.contains("str")).toBe(false);
     });
   });
+
+  describe("match", () => {
+    it("brace Some", () => {
+      const result = Some("test");
+
+      const spy = jest.fn((param: string) => param);
+
+      const r = result.match({
+        Some: (value) => spy(value),
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+        None: () => "none",
+      });
+
+      expect(spy).toBeCalledWith("test");
+      expect(r).toBe("test");
+    });
+
+    it("brace None", () => {
+      const result = None();
+
+      const spy = jest.fn((param: string) => param);
+
+      const r = result.match({
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
+        Some: (some) => some,
+        None: () => spy("none"),
+      });
+
+      expect(spy).toBeCalledWith("none");
+      expect(r).toBe("none");
+    });
+  });
 });

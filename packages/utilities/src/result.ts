@@ -1,9 +1,12 @@
-import { ExceptionLike } from "./exception";
+export type MatchResultBraces<T, E, O> = {
+  Ok: (t: T) => O;
+  Err: (e: E) => O;
+};
 
 /**
  * Result is a type that represents either success (Ok) or failure (Err).
  **/
-export class Result<T, E = ExceptionLike> {
+export class Result<T, E> {
   private readonly value?: T;
   private readonly error?: E;
 
@@ -169,6 +172,17 @@ export class Result<T, E = ExceptionLike> {
       return this.error === other.error;
     }
     return false;
+  }
+
+  /**
+   * This method can handle both Ok and Err values at the same time.
+   * @returns the value returned by the matching function.
+   **/
+  public match<O>(braces: MatchResultBraces<T, E, O>): O {
+    if (this.isOk()) {
+      return braces.Ok(this.value as T);
+    }
+    return braces.Err(this.error as E);
   }
 }
 
