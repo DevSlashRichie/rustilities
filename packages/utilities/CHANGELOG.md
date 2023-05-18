@@ -9,6 +9,7 @@
 ### Patch Changes
 
 - 3eeb267: Changed Exception for Errur
+
 - 90a5d34: Bump from throw into result.ts
 
 ## 1.0.9
