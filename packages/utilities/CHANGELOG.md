@@ -1,5 +1,11 @@
 # utilities
 
+## 1.1.1
+
+### Patch Changes
+
+- 6a67c09: okOr at option is now Errur
+
 ## 1.1.0
 
 ### Minor Changes

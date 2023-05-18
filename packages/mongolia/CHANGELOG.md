@@ -1,5 +1,13 @@
 # @mymetaverse/mongolia
 
+## 1.0.3
+
+### Patch Changes
+
+- 6a67c09: okOr at option is now Errur
+- Updated dependencies [6a67c09]
+  - @mymetaverse/utilities@1.1.1
+
 ## 1.0.2
 
 ### Patch Changes
