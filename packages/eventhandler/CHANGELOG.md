@@ -4,14 +4,14 @@
 
 ### Patch Changes
 
-- 51d600b: Registry now owns a way to complety close all dependencies to it.
+- 51d600b: Registry now owns a way to completely close all dependencies to it.
 
   Example:
 
   ```typescript
   const registry = new Registry();
 
-  // this will close all available listener but mantain connections open.
+  // this will close all available listener but maintain connections open.
   await registry.closeAllListeners();
 
   // this will also close the oppened connections.

@@ -6,21 +6,15 @@ import {
   Result,
   Ok,
   Err,
-  Exception,
-  Some,
+  Errur,
   EmptyElement,
   Empty,
 } from "@mymetaverse/utilities";
+import { EventHandlerError } from "./error";
 
 interface PublishOptions {
   routingKey?: string;
   options?: Options.Publish;
-}
-
-export class CouldNotDispatchException extends Exception {
-  constructor(parent: Error) {
-    super("Could not dispatch message.", Some(parent));
-  }
 }
 
 export class ConnectionDispatcher {
@@ -44,7 +38,7 @@ export class ConnectionDispatcher {
   }
 
   /**
-   * Publish a bufer of bytes to the exchange
+   * Publish a buffer of bytes to the exchange
    * @param value String to publish
    * @param options Options for the publish operation
    * @return a Result<EmptyElement, CouldNotDispatchException> of the result operation.
@@ -52,7 +46,7 @@ export class ConnectionDispatcher {
   public publishBuffer(
     value: Buffer,
     options?: PublishOptions
-  ): Result<EmptyElement, CouldNotDispatchException> {
+  ): Result<EmptyElement, Errur> {
     try {
       this.channel.publish(
         this.exchange,
@@ -61,15 +55,7 @@ export class ConnectionDispatcher {
         options?.options
       );
     } catch (err) {
-      if (err instanceof Error) {
-        return Err(new CouldNotDispatchException(err));
-      } else {
-        return Err(
-          new CouldNotDispatchException(
-            new Error(`Unknown parent: ${String(err)}`)
-          )
-        );
-      }
+      return Err(EventHandlerError.CouldNotDispatchMessage(err));
     }
 
     return Ok(Empty());
@@ -84,7 +70,7 @@ export class ConnectionDispatcher {
   public publishString(
     value: string,
     options?: PublishOptions
-  ): Result<EmptyElement, CouldNotDispatchException> {
+  ): Result<EmptyElement, Errur> {
     return this.publishBuffer(Buffer.from(value), options);
   }
 
@@ -97,7 +83,7 @@ export class ConnectionDispatcher {
   public publishObject<T extends object>(
     value: T,
     options?: PublishOptions
-  ): Result<EmptyElement, CouldNotDispatchException> {
+  ): Result<EmptyElement, Errur> {
     return this.publishString(JSON.stringify(value), options);
   }
 
@@ -110,7 +96,7 @@ export class ConnectionDispatcher {
   public publish<T extends object>(
     value: T,
     options?: PublishOptions
-  ): Result<EmptyElement, CouldNotDispatchException> {
+  ): Result<EmptyElement, Errur> {
     return this.publishString(JSON.stringify(value), options);
   }
 
