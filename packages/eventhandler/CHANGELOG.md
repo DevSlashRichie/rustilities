@@ -1,5 +1,15 @@
 # eventhandler
 
+## 1.1.6
+
+### Patch Changes
+
+- 3eeb267: Changed Exception for Errur
+- Updated dependencies [3eeb267]
+- Updated dependencies [3eeb267]
+- Updated dependencies [90a5d34]
+  - @mymetaverse/utilities@1.1.0
+
 ## 1.1.5
 
 ### Patch Changes
