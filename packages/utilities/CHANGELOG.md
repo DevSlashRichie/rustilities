@@ -1,5 +1,16 @@
 # utilities
 
+## 1.1.0
+
+### Minor Changes
+
+- 3eeb267: Removed complex Exception for Errur
+
+### Patch Changes
+
+- 3eeb267: Changed Exception for Errur
+- 90a5d34: Bump from throw into result.ts
+
 ## 1.0.9
 
 ### Patch Changes
