@@ -288,4 +288,32 @@ describe("Errur", () => {
       expect(isErrorKind2).toBeTruthy();
     });
   });
+
+  describe("clone", () => {
+    it("without override", () => {
+      const err = Errur.fromErrur({
+        kind: ErrorKind.CLIENT,
+        cause: "message",
+        description: "description",
+      });
+
+      const nerr = err.clone();
+
+      expect(nerr.kind).toEqual(err.kind);
+    });
+
+    it("with override", () => {
+      const err = Errur.fromErrur({
+        kind: ErrorKind.CLIENT,
+        cause: "message",
+        description: "description",
+      });
+
+      const nerr = err.clone({
+        kind: ErrorKind.CLIENT,
+      });
+
+      expect(nerr.kind).toEqual(ErrorKind.CLIENT);
+    });
+  });
 });
