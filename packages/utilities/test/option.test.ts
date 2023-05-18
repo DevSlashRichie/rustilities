@@ -1,4 +1,4 @@
-import { Some, None, Option } from "../src";
+import { Some, None, Option, Errur } from "../src";
 import { Err, Ok } from "../src";
 
 describe("Option", () => {
@@ -111,12 +111,33 @@ describe("Option", () => {
   describe("okOr", () => {
     it("when there is some", () => {
       const opt = Some("str");
-      expect(opt.okOr(new Error("error"))).toEqual(Ok("str"));
+      expect(
+        opt.okOr(
+          Errur.fromErrur({
+            kind: "error",
+            cause: "cause",
+          })
+        )
+      ).toEqual(Ok("str"));
     });
 
     it("when is empty", () => {
       const opt = None<string>();
-      expect(opt.okOr(new Error("error"))).toEqual(Err(new Error("error")));
+      expect(
+        opt.okOr(
+          Errur.fromErrur({
+            kind: "error",
+            cause: "cause",
+          })
+        )
+      ).toEqual(
+        Err(
+          Errur.fromErrur({
+            kind: "error",
+            cause: "cause",
+          })
+        )
+      );
     });
   });
 

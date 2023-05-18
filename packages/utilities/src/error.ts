@@ -58,11 +58,11 @@ export class Errur<K extends string = string, T = unknown> {
     }
   }
 
-  public clone(overrides: Partial<IErrur<K, T>>): Errur<K, T> {
+  public clone(overrides?: Partial<IErrur<K, T>>): Errur<K, T> {
     return new Errur<K, T>(
-      overrides.kind ?? this.kind,
-      overrides.cause ?? this.cause,
-      overrides.description ?? this.description
+      overrides?.kind ?? this.kind,
+      overrides?.cause ?? this.cause,
+      overrides?.description ?? this.description
     );
   }
 

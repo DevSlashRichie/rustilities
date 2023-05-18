@@ -1,3 +1,4 @@
+import { Errur } from "./error";
 import { Result } from "./result";
 
 export type MatchOptionBraces<T, O> = {
@@ -125,7 +126,7 @@ export class Option<T> {
    *
    * @returns a Result type.
    **/
-  public okOr(error: Error): Result<T, Error> {
+  public okOr(error: Errur): Result<T, Errur> {
     if (this.isNone()) {
       return Result.Err(error);
     }
