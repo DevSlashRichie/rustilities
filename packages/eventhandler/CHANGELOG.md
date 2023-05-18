@@ -1,5 +1,13 @@
 # eventhandler
 
+## 1.1.7
+
+### Patch Changes
+
+- 6a67c09: okOr at option is now Errur
+- Updated dependencies [6a67c09]
+  - @mymetaverse/utilities@1.1.1
+
 ## 1.1.6
 
 ### Patch Changes

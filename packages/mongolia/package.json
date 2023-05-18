@@ -1,6 +1,6 @@
 {
   "name": "@mymetaverse/mongolia",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "MongoDB internal framework",
   "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
