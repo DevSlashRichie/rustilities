@@ -9,10 +9,10 @@ import {
   ObjectId,
 } from "mongodb";
 import { DomainEvents, Entity, EntityId } from "ddd-scaffold";
-import { Mapper, MapToEntityError } from "./mapper";
+import { Mapper } from "./mapper";
 import { DefaultMapper } from "./mapper";
 import { PaginationNode } from "./pagination";
-import { None, Ok, Option, Result } from "@mymetaverse/utilities";
+import { None, Ok, Option, Result, Errur } from "@mymetaverse/utilities";
 
 export abstract class Repo<T extends Entity<unknown>> {
   public readonly name: string;
@@ -64,7 +64,7 @@ export abstract class Repo<T extends Entity<unknown>> {
     );
   }
 
-  private map(something: any): Result<Option<T>, MapToEntityError> {
+  private map(something: any): Result<Option<T>, Errur> {
     const entity = this.mapper$.toEntity(something);
     return entity.map((e) => Option.fromNullable(e));
   }
@@ -72,7 +72,7 @@ export abstract class Repo<T extends Entity<unknown>> {
   public async findAndMap(
     filter: Filter<any>,
     options?: FindOptions
-  ): Promise<Result<Option<T>, MapToEntityError>> {
+  ): Promise<Result<Option<T>, Errur>> {
     const find = await this.collection.findOne(filter, options);
 
     if (!find) return Ok(None());
@@ -80,15 +80,13 @@ export abstract class Repo<T extends Entity<unknown>> {
     return this.map(find);
   }
 
-  public async findById(
-    _id: EntityId
-  ): Promise<Result<Option<T>, MapToEntityError>> {
+  public async findById(_id: EntityId): Promise<Result<Option<T>, Errur>> {
     return await this.findAndMap({ _id });
   }
 
   public async findAndDeleteById(
     _id: EntityId
-  ): Promise<{ el: Result<Option<T>, MapToEntityError>; emit: () => void }> {
+  ): Promise<{ el: Result<Option<T>, Errur>; emit: () => void }> {
     const find = await this.collection.findOneAndDelete({
       _id: _id as unknown as ObjectId,
     });

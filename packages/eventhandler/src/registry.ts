@@ -10,9 +10,9 @@ import {
   Some,
   None,
   Option,
+  Errur,
 } from "@mymetaverse/utilities";
-import { NotFoundConnectionError } from "./errors";
-import { CouldNotParsePayloadError } from "./errors/could-not-parse-payload-error";
+import { EventHandlerError } from "./error";
 import { WrappedConnection } from "./wrapped-connection";
 
 /**
@@ -66,10 +66,10 @@ export class Registry {
    */
   public async findAndCloseConnection(
     host: string
-  ): Promise<Result<EmptyElement, NotFoundConnectionError>> {
+  ): Promise<Result<EmptyElement, Errur<string>>> {
     const connection = this.connections[host];
 
-    if (!connection) return Err(new NotFoundConnectionError(host));
+    if (!connection) return Err(EventHandlerError.NotFoundConnection(host));
 
     if (connection) {
       await connection.close();
@@ -88,7 +88,7 @@ export class Registry {
   public async addListeners<T extends Listener>(
     connectionWrapper: WrappedConnection,
     ...listeners: Array<T>
-  ): Promise<Array<Result<EmptyElement, NotFoundConnectionError>>> {
+  ): Promise<Array<Result<EmptyElement, Errur>>> {
     const promises = listeners.map((it) =>
       this.addListener(connectionWrapper, it)
     );
@@ -104,7 +104,7 @@ export class Registry {
   public async addListener<T extends Listener>(
     connectionWrapper: WrappedConnection,
     listener: InnerListener<T>
-  ): Promise<Result<EmptyElement, NotFoundConnectionError>> {
+  ): Promise<Result<EmptyElement, Errur>> {
     const connection = connectionWrapper.connection;
 
     const availableMethods = Object.getOwnPropertyNames(
@@ -119,7 +119,6 @@ export class Registry {
         );
 
         if (eventHandlerAnnotation) {
-          console.debug(`Found event handler annotation in ${method}`);
           const { exchange, queue, consumerOptions, descriptor } =
             eventHandlerAnnotation;
 
@@ -165,10 +164,10 @@ export class Registry {
                 listener[descriptor.value.name](payload, msg, channel);
               } catch (err) {
                 console.error(
-                  new CouldNotParsePayloadError(
-                    msg?.content.toString(),
-                    err instanceof Error ? err : undefined
-                  )
+                  EventHandlerError.CouldNotParsePayload(
+                    msg?.content.toString() || "null",
+                    err
+                  ).display()
                 );
               }
             },

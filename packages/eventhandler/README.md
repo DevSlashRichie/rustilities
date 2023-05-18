@@ -29,7 +29,7 @@ class MyCustomListener implements Listener {
 
   }
 
-  // here the impementation will require you to implement some methods
+  // here the implementation will require you to implement some methods
   // for internal usage.
 
   public __connection: Option<WrappedConnection> = None();

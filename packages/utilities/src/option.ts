@@ -1,5 +1,10 @@
 import { Result } from "./result";
 
+export type MatchOptionBraces<T, O> = {
+  Some: (t: T) => O;
+  None: () => O;
+};
+
 /**
  * Use this class to create an Option type.
  **/
@@ -150,6 +155,18 @@ export class Option<T> {
       return false;
     }
     return this.value === value;
+  }
+
+  /**
+   * This method can handle both Ok and Err values at the same time.
+   * @returns the value returned by the matching function.
+   **/
+  public match<O>(braces: MatchOptionBraces<T, O>): O {
+    if (this.isSome()) {
+      return braces.Some(this.value as T);
+    }
+
+    return braces.None();
   }
 
   /**

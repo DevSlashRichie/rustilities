@@ -29,6 +29,7 @@
     "@changesets/cli": "^2.26.0",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@faker-js/faker": "^8.0.1",
     "@types/node": "^18.13.0",
     "@types/yargs": "^17.0.22",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
