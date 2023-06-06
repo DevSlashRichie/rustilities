@@ -10,7 +10,7 @@ export type MatchOptionBraces<T, O> = {
  * Use this class to create an Option type.
  **/
 export class Option<T> {
-  private readonly value?: T;
+  private value?: T;
 
   private constructor(value?: T) {
     this.value = value;
@@ -168,6 +168,43 @@ export class Option<T> {
     }
 
     return braces.None();
+  }
+
+  /**
+   * Replaces the actual value of the Option with a new one.
+   * @returns The old value if present.
+   * */
+  public replace(value: T): Option<T> {
+    const toReturn = this.match({
+      Some: (current) => {
+        return Option.Some(current);
+      },
+      None: () => {
+        return Option.None();
+      },
+    }) as Option<T>;
+
+    this.value = value;
+    return toReturn;
+  }
+
+  /**
+   * Will take the value in the option and leave it empty.
+   * @returns The value if present.
+   *
+   */
+  public take(): Option<T> {
+    const toReturn = this.match({
+      Some: (current) => {
+        return Option.Some(current);
+      },
+      None: () => {
+        return Option.None();
+      },
+    }) as Option<T>;
+
+    this.value = undefined;
+    return toReturn;
   }
 
   /**
