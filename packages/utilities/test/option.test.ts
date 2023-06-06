@@ -196,4 +196,44 @@ describe("Option", () => {
       expect(r).toBe("none");
     });
   });
+
+  describe("replace", () => {
+    it("when there is some", () => {
+      const opt = Some("str");
+      const n = opt.replace("default");
+
+      expect(n.isSome()).toBeTruthy();
+      expect(n.unwrap()).toBe("str");
+
+      expect(opt.isSome()).toBeTruthy();
+      expect(opt.unwrap()).toBe("default");
+    });
+
+    it("when is empty", () => {
+      const opt = None<string>();
+      const n = opt.replace("default");
+
+      expect(n.isNone()).toBeTruthy();
+
+      expect(opt.isSome()).toBeTruthy();
+      expect(opt.unwrap()).toEqual("default");
+    });
+  });
+
+  describe("take", () => {
+    it("when there is some", () => {
+      const opt = Some("str");
+      const n = opt.take();
+
+      expect(n.isSome()).toBeTruthy();
+      expect(n.unwrap()).toBe("str");
+    });
+
+    it("when is empty", () => {
+      const opt = None<string>();
+      const n = opt.take();
+
+      expect(n.isNone()).toBeTruthy();
+    });
+  });
 });
