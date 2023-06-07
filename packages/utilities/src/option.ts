@@ -208,6 +208,27 @@ export class Option<T> {
   }
 
   /**
+   * Use this method to flatten an Option of an Option.
+   * @returns a new Option.
+   * */
+  public flat(): Option<T> {
+    const checkNext = (next: Option<T>) => {
+      return next.match({
+        Some: (value) => {
+          if (value instanceof Option) {
+            return checkNext(value);
+          } else {
+            return next;
+          }
+        },
+        None: () => None(),
+      });
+    };
+
+    return checkNext(this);
+  }
+
+  /**
    * Create a new Option from a possible empty value.
    * @returns a new Option.
    **/
