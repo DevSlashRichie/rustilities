@@ -1,5 +1,11 @@
 # utilities
 
+## 1.1.3
+
+### Patch Changes
+
+- ca900fc: Added flat() method to option. Chaned options can now be converted into single.
+
 ## 1.1.2
 
 ### Patch Changes

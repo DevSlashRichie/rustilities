@@ -236,4 +236,22 @@ describe("Option", () => {
       expect(n.isNone()).toBeTruthy();
     });
   });
+
+  describe("flat", () => {
+    it("single", () => {
+      const opt = Some("str");
+      const n = opt.flat();
+
+      expect(n.isSome()).toBeTruthy();
+      expect(n.unwrap()).toBe("str");
+    });
+
+    it("double", () => {
+      const opt = Some(Some("str"));
+      const n = opt.flat();
+
+      expect(n.isSome()).toBeTruthy();
+      expect(n.unwrap()).toBe("str");
+    });
+  });
 });
