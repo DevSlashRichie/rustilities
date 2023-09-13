@@ -4,7 +4,6 @@
   "compilerOptions": {
     "outDir": "build",
     "incremental": true,
-    "lib": ["dom", "dom.iterable"],
-    "isolatedModules": true
+    "lib": ["dom", "dom.iterable"]
   }
 }
