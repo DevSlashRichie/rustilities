@@ -1,6 +1,6 @@
 {
   "name": "@mymetaverse/eventsource",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "a simple way to handle http subscriptions using EventSource",
   "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
