@@ -1,0 +1,10 @@
+{
+  "extends": "@mymetaverse/global/base.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "build",
+    "incremental": true,
+    "lib": ["dom", "dom.iterable"],
+    "isolatedModules": true
+  }
+}

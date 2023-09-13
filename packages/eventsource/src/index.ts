@@ -6,12 +6,12 @@ interface Payload<T> {
 // eslint-disable-next-line no-unused-vars
 export type EventConsumer<T> = (payload: T, ok: () => void) => void;
 
-interface FactorySettings {
+export interface FactorySettings {
   url: string;
   auth?: AuthSettings;
 }
 
-interface AuthSettings {
+export interface AuthSettings {
   url: string;
   headers?: Record<string, string>;
   body?: Record<string, unknown>;
@@ -51,6 +51,14 @@ export class EventHandler {
 
   public get requiresAuth() {
     return !!this.settings.auth;
+  }
+
+  public get isConnected() {
+    return this.connected;
+  }
+
+  public get id() {
+    return this.clientId;
   }
 
   public isAuth() {
@@ -201,10 +209,12 @@ export class EventHandler {
       this.handleError(state === EventSource.CLOSED);
     };
 
-    // We disconnect the event source when the client is closed
+    if (!this.isAuth && this.requiresAuth) this.authClient();
   }
 
-  private static _eventHandler: EventHandler;
+  public close() {
+    if (this._eventSource) this._eventSource.close();
+  }
 
   public static create(settings: FactorySettings | string): EventHandler {
     const _settings =
@@ -214,16 +224,7 @@ export class EventHandler {
           } as FactorySettings)
         : settings;
 
-    const requiresAuth = !!_settings.url;
-
-    if (EventHandler._eventHandler) {
-      const isAuth = EventHandler._eventHandler.isAuth();
-      if (!isAuth && requiresAuth) EventHandler._eventHandler.authClient();
-      return EventHandler._eventHandler;
-    }
-
-    EventHandler._eventHandler = EventHandler.createClient(_settings);
-    return EventHandler._eventHandler;
+    return EventHandler.createClient(_settings);
   }
 
   private static createClient(settings: FactorySettings) {
