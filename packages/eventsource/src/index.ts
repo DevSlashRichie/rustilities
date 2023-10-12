@@ -234,3 +234,5 @@ export class EventHandler {
     return eventHandler;
   }
 }
+
+export * from "./hook";

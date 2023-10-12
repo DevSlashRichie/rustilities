@@ -14,11 +14,11 @@ export function useEventSource(settings: FactorySettings, global = true) {
       setEventHandler(EventHandler.create(settings));
     }
 
-    if (!global) {
-      return () => {
+    return () => {
+      if (!global) {
         eventHandler?.close();
-      };
-    }
+      }
+    };
   }, []);
 
   return {
