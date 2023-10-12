@@ -1,0 +1,9 @@
+{
+  "extends": "@mymetaverse/global/base.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    "outDir": "build",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react"
+  }
+}
