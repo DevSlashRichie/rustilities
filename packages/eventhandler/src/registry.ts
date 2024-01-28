@@ -47,7 +47,8 @@ export class Registry {
    * @returns an object which includes `close` method to later close the connection and `connection` which is the opened connection.
    */
   public async openConnection(host: string) {
-    const rawConnection = await amqp.connect(host);
+    const rawConnection = await this.createRawConnection(host);
+
     const connection = new WrappedConnection(rawConnection);
     this.connections[host] = connection;
     return {
@@ -56,6 +57,52 @@ export class Registry {
       },
       connection,
     };
+  }
+
+  private async createRawConnection(host: string): Promise<amqp.Connection> {
+    const rawConnection = await amqp.connect(host);
+
+    rawConnection.on("close", () => {
+      console.log(`amqp connection ${host} closed!`);
+      this.reConnectOnFailure(host);
+    });
+
+    return rawConnection;
+  }
+
+  private async reConnectOnFailure(host: string) {
+    const reconnect = async () => {
+      const warppedConnection = this.connections[host];
+
+      // if WrappedConnection is not found, or already closed. will return without retrying to reconnect
+      if (!warppedConnection) return;
+      if (warppedConnection.closed) return;
+
+      const listeners = [...this.listeners].filter((it) => {
+        const con = it.__connection.unwrap();
+        return con === warppedConnection;
+      });
+
+      console.log(`found ${listeners.length} listeners`);
+      const rawConnection = await this.createRawConnection(host);
+      warppedConnection.updateConnection(rawConnection);
+
+      await Promise.all(listeners.map((it) => this.removeListener(it)));
+      await this.addListeners(warppedConnection, ...listeners);
+    };
+
+    const intervalId = setInterval(async () => {
+      try {
+        console.log(`Reconnecting to ${host}`);
+        await reconnect();
+        clearInterval(intervalId);
+        console.log(`Connection to ${host} has recovered!`);
+      } catch (err) {
+        console.log(
+          `an error occurred while reconnecting back to ${host} - ${err}. Retrying in 10 seconds`
+        );
+      }
+    }, 10000);
   }
 
   /**
