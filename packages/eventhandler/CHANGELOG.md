@@ -1,5 +1,11 @@
 # eventhandler
 
+## 1.1.8
+
+### Patch Changes
+
+- cd36563: Added logic for retry on connection failure
+
 ## 1.1.7
 
 ### Patch Changes
