@@ -17,11 +17,22 @@ interface PublishOptions {
   options?: Options.Publish;
 }
 
+interface DeferredMessage {
+  value: Buffer;
+  options?: PublishOptions;
+}
+
 export class ConnectionDispatcher {
+  private deferredMessages: Array<DeferredMessage> = [];
   private constructor(
-    public readonly channel: Channel,
+    private channel: Channel,
     public readonly exchange: string
   ) {}
+
+  updateChannel(channel: Channel) {
+    this.channel = channel;
+    this.sendDeferredMessages();
+  }
 
   /**
    * Assert the creation of the exchange
@@ -54,7 +65,17 @@ export class ConnectionDispatcher {
         value,
         options?.options
       );
-    } catch (err) {
+    } catch (err: any) {
+      if (err.message === "Channel closed") {
+        console.log(
+          `Couldnt dispatch message to ${this.exchange}, Saving it for later - ${err}`
+        );
+        this.saveMessageForLater({
+          value,
+          options,
+        });
+      }
+
       return Err(EventHandlerError.CouldNotDispatchMessage(err));
     }
 
@@ -114,5 +135,20 @@ export class ConnectionDispatcher {
       await connection.connection.createChannel(),
       exchange
     );
+  }
+
+  private saveMessageForLater(msg: DeferredMessage) {
+    this.deferredMessages.push(msg);
+  }
+  private sendDeferredMessages() {
+    if (this.deferredMessages.length > 0 && this.channel.connection) {
+      console.log(
+        `Connection has recovered! Sended ${this.deferredMessages.length} deferred messages.`
+      );
+      this.deferredMessages.forEach((it) =>
+        this.publishBuffer(it.value, it.options)
+      );
+      this.deferredMessages = [];
+    }
   }
 }
