@@ -1,4 +1,4 @@
-import toExtends from "@mymetaverse/global/jest.config";
+import toExtends from "@devslashrichie/global/jest.config";
 
 export default {
   ...toExtends,

@@ -1,21 +1,39 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "globalDependencies": [".env", "tsconfig.json"],
-  "pipeline": {
+  "globalDependencies": [
+    ".env",
+    "tsconfig.json"
+  ],
+  "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputMode": "full",
+      "dependsOn": [
+        "^build"
+      ],
       "cache": true,
-      "outputs": ["build"],
-      "inputs": ["src/**/*.ts", "test/**/*.ts"]
+      "outputs": [
+        "build"
+      ],
+      "inputs": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+      ]
     },
     "lint:check": {
-      "inputs": ["src/**/*.ts", "test/**/*.ts"],
+      "inputs": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+      ],
       "outputs": []
     },
     "test": {
-      "dependsOn": ["^build", "^test"],
-      "inputs": ["src/**/*.ts", "test/**/*.ts"]
+      "dependsOn": [
+        "^build",
+        "^test"
+      ],
+      "inputs": [
+        "src/**/*.ts",
+        "test/**/*.ts"
+      ]
     }
   }
 }

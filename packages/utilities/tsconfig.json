@@ -1,5 +1,5 @@
 {
-  "extends": "@mymetaverse/global/base.json",
+  "extends": "@devslashrichie/global/base.json",
   "include": ["src/**/*"],
   "compilerOptions": {
     "outDir": "build"

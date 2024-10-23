@@ -1,8 +1,7 @@
 {
-  "name": "@mymetaverse/eventsource",
+  "name": "@devslashrichie/eventsource",
   "version": "1.0.1",
   "description": "a simple way to handle http subscriptions using EventSource",
-  "packageManager": "yarn@3.3.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
@@ -19,7 +18,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@mymetaverse/global": "*"
+    "@devslashrichie/global": "*"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.3",
